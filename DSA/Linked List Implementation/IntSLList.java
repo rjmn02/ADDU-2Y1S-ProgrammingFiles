@@ -48,11 +48,23 @@ public class IntSLList {
             head = tail = null;
         }else {
             IntSLLNode temp;
-            for(temp = head; temp != tail; temp = temp.next);
+            for(temp = head; temp.next != tail; temp = temp.next);
             tail = temp;
             tail.next = null;
         }
         return element;
+    }
+
+    public void delete(int element){
+        if(!isEmpty()){
+            if(head.info == element && head == tail){
+                head = tail = null;
+            }else if(head.info == element){
+                head = head.next;
+            }else {
+                
+            }
+        }
     }
 
     public void printAll(){
