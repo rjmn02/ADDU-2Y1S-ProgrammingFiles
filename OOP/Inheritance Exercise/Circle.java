@@ -1,9 +1,8 @@
-import java.util.*;
-import java.io.*;
+
 
 public class Circle {
     private double radius;
-
+    final double pi = Math.PI;
     public Circle(double radius){
         this.radius = radius;
     }
@@ -21,11 +20,11 @@ public class Circle {
     }
 
     public double area(){
-        return Math.PI*(this.radius*this.radius);
+        return pi*(this.radius*this.radius);
     }
 
     public double circumference(){
-        return 2*Math.PI*this.radius;
+        return 2*pi*this.radius;
     }
 
 }
