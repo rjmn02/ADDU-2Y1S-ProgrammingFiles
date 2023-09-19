@@ -2,7 +2,8 @@
 
 public class Circle {
     private double radius;
-    final double pi = Math.PI;
+    protected final double pi = Math.PI;
+
     public Circle(double radius){
         this.radius = radius;
     }
