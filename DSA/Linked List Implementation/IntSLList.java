@@ -23,6 +23,12 @@ public class IntSLList {
         }
     }
 
+    public boolean isInList(int el) {
+        IntSLLNode tmp;
+        for (tmp = head; tmp != null && tmp.info != el; tmp = tmp.next);
+        return tmp != null;
+    }
+
     public void addToHead(int element){
         head = new IntSLLNode(element, head);
         if(tail == null){
@@ -31,7 +37,7 @@ public class IntSLList {
         
     }
 
-    public int deleteFromHead(){
+    public void deleteFromHead(){
         int element = head.info;
         if(head == tail){
             head = tail = null;
@@ -39,10 +45,10 @@ public class IntSLList {
             head = head.next;
         }
 
-        return element;
+        
     }
 
-    public int deleteFromTail(){
+    public void deleteFromTail(){
         int element = tail.info;
         if(head == tail){
             head = tail = null;
@@ -52,7 +58,7 @@ public class IntSLList {
             tail = temp;
             tail.next = null;
         }
-        return element;
+       
     }
 
     public void delete(int element){

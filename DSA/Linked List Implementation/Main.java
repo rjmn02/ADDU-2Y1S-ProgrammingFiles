@@ -18,6 +18,7 @@ public class Main {
         System.out.println("\n");
 
         list1.delete(65);
+        list1.delete(9);
 
         list1.printAll();
     }
