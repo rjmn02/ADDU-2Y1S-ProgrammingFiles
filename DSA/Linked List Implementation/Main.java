@@ -21,7 +21,7 @@ public class Main {
                 list1.addToTail(input);
             }
         }
-
+        console.close();
         list1.printAll();
 
     }
