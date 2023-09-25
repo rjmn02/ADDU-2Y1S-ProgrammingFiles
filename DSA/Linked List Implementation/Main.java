@@ -6,10 +6,11 @@ public class Main {
 
     //comment
     public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
         IntSLList list1 = new IntSLList();
-        list1.addToHead(2);
-        list1.addToHead(43);
-        list1.addToHead(45);
+
+        int input;
+        input = 
 
         list1.printAll();
     }

@@ -62,7 +62,13 @@ public class IntSLList {
             }else if(head.info == element){
                 head = head.next;
             }else {
-                
+                IntSLLNode pred; 
+                IntSLLNode temp;
+                for(pred = head, temp = head.next; pred != null && temp.info != element; pred = pred.next, temp = temp.next)
+
+                if(temp.info == element){
+
+                }
             }
         }
     }
