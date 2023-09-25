@@ -37,18 +37,18 @@ public class IntSLList {
         
     }
 
-    public void deleteFromHead(){
+    public int deleteFromHead(){
         int element = head.info;
         if(head == tail){
             head = tail = null;
         }else {
             head = head.next;
         }
-
+        return element;
         
     }
 
-    public void deleteFromTail(){
+    public int deleteFromTail(){
         int element = tail.info;
         if(head == tail){
             head = tail = null;
@@ -58,7 +58,7 @@ public class IntSLList {
             tail = temp;
             tail.next = null;
         }
-       
+       return element;
     }
 
     public void delete(int element){
@@ -88,7 +88,7 @@ public class IntSLList {
     public void printAll(){
 
         for(IntSLLNode temp = head; temp != null; temp = temp.next){
-            System.out.println(temp.info + " ");
+            System.out.print(temp.info + " ");
         }
     }
 }
