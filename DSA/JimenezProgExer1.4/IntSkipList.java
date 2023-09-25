@@ -28,7 +28,8 @@ public class IntSkipList {
     }
 
     public int chooseLevels(){
-        int i, r = Math.abs(rd.nextInt()) % powers[maxLevel - 1] + 1;
+        int i;
+        int r = Math.abs(rd.nextInt()) % powers[maxLevel - 1] + 1;
         for(i = 1; i < maxLevel; i++){
             if(r < powers[i]){
                 return i - 1;
@@ -37,6 +38,6 @@ public class IntSkipList {
         return i - 1;
     }
 
-    
+
     
 }
