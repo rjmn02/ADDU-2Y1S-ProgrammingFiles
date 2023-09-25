@@ -64,11 +64,17 @@ public class IntSLList {
             }else {
                 IntSLLNode pred; 
                 IntSLLNode temp;
-                for(pred = head, temp = head.next; pred != null && temp.info != element; pred = pred.next, temp = temp.next)
+                for(pred = head, temp = head.next; 
+                    temp != null && temp.info != element; 
+                    pred = pred.next, temp = temp.next);
 
-                if(temp.info == element){
-
+                if(temp != null){
+                    pred.next = temp.next;
+                    if(temp == tail){
+                        tail = pred;
+                    }
                 }
+
             }
         }
     }
