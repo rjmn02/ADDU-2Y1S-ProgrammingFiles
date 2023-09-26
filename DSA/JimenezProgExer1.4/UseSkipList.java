@@ -2,17 +2,24 @@ import java.util.*;
 import java.io.*;
 public class UseSkipList {
     public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
         IntSkipList list = new IntSkipList();
         writeNumbers();
         readFile(list);
+
         
+        System.out.println("Enter an integer to search on the list");
+        int input = Integer.parseInt(console.nextLine());
+        console.close();
+        int node = list.skipListSearch(input);
+        if(input != 0){
+            System.out.println("Nodes searched: " + node);
+        }else{
+            System.out.println("Not found");
+        }
+
     }
 
-    static void userInput(){
-        Scanner console = new Scanner(System.in);
-        System.out.println("Enter an integer to search on the list");
-        int input = Integer.parseInt(console.nextLine()); 
-    }
     static void readFile(IntSkipList list){
         try {
             FileReader fr = new FileReader("data.txt");
@@ -35,7 +42,6 @@ public class UseSkipList {
                 bw.newLine();
             }
             bw.close();
-            System.out.println("Successfully wrote to the file.");
           } catch (IOException e) {
             System.out.println("An error occurred.");
             e.printStackTrace();

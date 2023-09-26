@@ -40,12 +40,14 @@ public class IntSkipList {
 
     public int skipListSearch(int key){
         int lvl;
+        int counter = 0;
         IntSkipListNode prev, curr;
         for(lvl = maxLevel - 1; lvl >= 0 && root[lvl] == null; lvl--);
         prev = curr = root[lvl];
         while(true) {
+            counter++;
             if(key == curr.key){
-                return curr.key;
+                return counter;
             }else if(key < curr.key){
                 if(lvl == 0){
                     return 0;
