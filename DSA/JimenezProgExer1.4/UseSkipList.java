@@ -2,10 +2,27 @@ import java.util.*;
 import java.io.*;
 public class UseSkipList {
     public static void main(String[] args) {
-        writeToFile();
+        IntSkipList list = new IntSkipList();
+        writeNumbers();
+        readFile(list);
+        
     }
 
-    static void writeToFile(){
+    static void readFile(IntSkipList list){
+        try {
+            FileReader fr = new FileReader("data.txt");
+            Scanner in = new Scanner(fr);
+            while(in.hasNextLine()){
+                int val = Integer.parseInt(in.nextLine());
+                list.skipListInsert(val);
+            }
+
+            in.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+    static void writeNumbers(){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("data.txt"));
             for(int i = 1; i <= 100; i++){
