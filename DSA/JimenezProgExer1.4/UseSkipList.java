@@ -4,11 +4,11 @@ public class UseSkipList {
     public static void main(String[] args) {
         Scanner console = new Scanner(System.in);
         IntSkipList list = new IntSkipList();
-        writeNumbers();
+        writeNumbers(); //write numbers in data.txt
         readFile(list);
 
         
-        System.out.println("Enter an integer to search on the list");
+        System.out.println("Enter an integer to search on the list: ");
         int input = Integer.parseInt(console.nextLine());
         console.close();
         int node = list.skipListSearch(input);
@@ -37,7 +37,7 @@ public class UseSkipList {
     static void writeNumbers(){
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("data.txt"));
-            for(int i = 1; i <= 100; i++){
+            for(int i = 1; i <= 100; i++){  //write 1-100
                 bw.write(String.valueOf(i));
                 bw.newLine();
             }
