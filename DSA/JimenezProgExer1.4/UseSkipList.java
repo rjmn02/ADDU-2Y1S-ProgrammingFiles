@@ -12,7 +12,7 @@ public class UseSkipList {
         int input = Integer.parseInt(console.nextLine());
         console.close();
         int node = list.skipListSearch(input);
-        if(input != 0){
+        if(node != 0){
             System.out.println("Nodes searched: " + node);
         }else{
             System.out.println("Not found");
