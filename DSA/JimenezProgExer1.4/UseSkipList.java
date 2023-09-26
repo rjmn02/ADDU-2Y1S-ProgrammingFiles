@@ -8,6 +8,11 @@ public class UseSkipList {
         
     }
 
+    static void userInput(){
+        Scanner console = new Scanner(System.in);
+        System.out.println("Enter an integer to search on the list");
+        int input = Integer.parseInt(console.nextLine()); 
+    }
     static void readFile(IntSkipList list){
         try {
             FileReader fr = new FileReader("data.txt");
