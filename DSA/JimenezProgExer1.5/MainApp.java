@@ -4,6 +4,7 @@ public class MainApp {
     public static void main(String[] args) {
         LinkedList<Student> list = new LinkedList<>();
         readFile(list);
+        display(list);
     }
 
     static void readFile(LinkedList<Student> list){
@@ -14,6 +15,11 @@ public class MainApp {
                 String lastName = scan.nextLine();
                 String firstName = scan.nextLine();
                 
+                if(startsWithVowel(lastName.toCharArray())){
+                    list.addFirst(new Student(lastName, firstName));
+                }else{
+                    list.addLast(new Student(lastName, firstName));
+                }
                 
             }
         } catch (Exception e) {
@@ -22,12 +28,18 @@ public class MainApp {
     }
 
     static boolean startsWithVowel(char[] lastName){
-        char firstLetter = lastName[lastName.length - 1];
+        char firstLetter = lastName[0];
         if(firstLetter == 'a'|| firstLetter == 'e' || firstLetter == 'i' || firstLetter == 'o' ||
         firstLetter == 'u'){
             return true;
         }else{
             return false;
+        }
+    }
+
+    static void display(LinkedList<Student> list){
+        for (Student student : list) {
+            System.out.println(student.toString());
         }
     }
 }
