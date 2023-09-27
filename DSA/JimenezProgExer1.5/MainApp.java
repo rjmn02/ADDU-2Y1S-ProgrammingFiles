@@ -29,8 +29,10 @@ public class MainApp {
 
     static boolean startsWithVowel(char[] lastName){
         char firstLetter = lastName[0];
-        if(firstLetter == 'a'|| firstLetter == 'e' || firstLetter == 'i' || firstLetter == 'o' ||
-        firstLetter == 'u'){
+        String firstLetterString = String.valueOf(firstLetter);
+        
+        if(firstLetterString == "a"|| firstLetterString == "e" || firstLetterString == "i" || firstLetterString == "o" ||
+        firstLetterString == "u"){
             return true;
         }else{
             return false;

@@ -7,7 +7,7 @@ public class Student {
         this.lastName = ln;
         this.firstName = fn;
     }
-
+    
     public String toString(){
         return String.format("%s, %s", this.lastName, this.firstName);
     }
