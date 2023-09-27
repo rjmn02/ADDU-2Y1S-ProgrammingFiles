@@ -22,6 +22,7 @@ public class MainApp {
                 }
                 
             }
+            scan.close();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -31,8 +32,8 @@ public class MainApp {
         char firstLetter = lastName[0];
         String firstLetterString = String.valueOf(firstLetter);
         
-        if(firstLetterString == "a"|| firstLetterString == "e" || firstLetterString == "i" || firstLetterString == "o" ||
-        firstLetterString == "u"){
+        if(firstLetterString.equalsIgnoreCase("a")|| firstLetterString .equalsIgnoreCase("e")|| firstLetterString .equalsIgnoreCase("i")
+        || firstLetterString .equalsIgnoreCase("o")||firstLetterString.equalsIgnoreCase("u")){
             return true;
         }else{
             return false;
