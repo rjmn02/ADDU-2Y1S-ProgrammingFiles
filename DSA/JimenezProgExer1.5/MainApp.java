@@ -41,5 +41,6 @@ public class MainApp {
         for (Student student : list) {
             System.out.println(student.toString());
         }
+
     }
 }
