@@ -1,19 +1,16 @@
 
 
-def function():
+def insertionSort():
     list = [5,2,2,6,7,1,2,5]
-    var = 5
-    var1 = 2
-    
-    for i in list:
-        for j in list:
-            temp = j[j+1]
-            j = j[j+1]
-            j[j+1] = temp 
-    
-    for i in list:
-        print(i)
+    for i in range(len(list)-1):
+        for j in range(len(list)-1, i, -1):
+            if list[j] < list[j-1]:
+                temp = list[j-1]
+                list[j-1] = list[j]
+                list[j] = temp 
 
+    for l in list:
+        print(l)
     
 
-function()
+insertionSort()
