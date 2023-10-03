@@ -29,15 +29,15 @@ public class MainApp {
     }
 
     static boolean startsWithVowel(char[] lastName){
-        char firstLetter = lastName[0];
-        String firstLetterString = String.valueOf(firstLetter);
         
-        if(firstLetterString.equalsIgnoreCase("a")|| firstLetterString .equalsIgnoreCase("e")|| firstLetterString .equalsIgnoreCase("i")
-        || firstLetterString .equalsIgnoreCase("o")||firstLetterString.equalsIgnoreCase("u")){
+        String firstLetter = String.valueOf(lastName[0]);
+        String str = "aeiouAEIOU";
+        if(str.indexOf(firstLetter) != -1){
             return true;
         }else{
             return false;
         }
+    
     }
 
     static void display(LinkedList<Student> list){
