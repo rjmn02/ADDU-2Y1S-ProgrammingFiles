@@ -34,11 +34,12 @@ public class Main {
         base = Integer.parseInt(console.nextLine());
 
         decimalToBase(base, decimal, result);
+        System.out.printf("Base %d Form: ", base);
         System.out.println(result.toString());
     }
     
     static void decimalToBase(int base, double decimal, LLStack stack){
-        while(decimal > 0){
+        while((int)decimal > 0){
             int remainder = (int) decimal%base;
             String digit = getDigit(remainder);
 
