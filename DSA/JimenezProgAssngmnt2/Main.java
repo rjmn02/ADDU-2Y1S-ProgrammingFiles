@@ -21,12 +21,12 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) {
-        LLStack result = new LLStack();
-        inputData(result);
-        System.out.println(result.toString());
+        LLStack stack = new LLStack();
+        inputData(stack);
+        System.out.println(stack.toString());
     }
     
-    static void inputData(LLStack result){
+    static void inputData(LLStack stack){
         Scanner console = new Scanner(System.in);
         double decimal;
         int base;
@@ -38,18 +38,19 @@ public class Main {
         console.close();
 
         System.out.printf("Converted to base %d: ", base);
-        decimalToBase(base, decimal, result);
+        decimalToBase(base, decimal, stack);
     }
     static void decimalToBase(int base, double decimal, LLStack stack){
-        
-        while((int)decimal > 0){
+        if(base < 27){
+            while((int)decimal > 0){
             int remainder = (int) decimal%base;
             String digit = getDigit(remainder);
 
             stack.push(digit);
             decimal /= base;
-        }
-        
+            }
+        }else
+            System.out.println("Invalid base value, must be <= 27");
     }
     static String getDigit(int r){
         String letters = "ABCDEFGHJIKLMNOPQR";
