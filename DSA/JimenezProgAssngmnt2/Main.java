@@ -21,7 +21,6 @@ import java.io.*;
 public class Main {
     static Scanner console = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner console = new Scanner(System.in);
         LLStack stack = new LLStack();
 
         double decimal = getDecimal();
