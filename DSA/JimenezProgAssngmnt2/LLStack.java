@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class Stack {
+public class LLStack {
     LinkedList<Object> list = new LinkedList<>();
 
     //is empty
@@ -9,12 +9,12 @@ public class Stack {
     }  
     //push
     public void push(Object element){
-        list.addLast(element);
+        list.addFirst(element);
     }
     //pop
     public void pop(){
         if(!isEmpty()){
-            list.removeLast();
+            list.removeFirst();
         }
     }
 
@@ -23,7 +23,7 @@ public class Stack {
     }
 
     public Object topEL(){
-        return list.getLast();
+        return list.getFirst();
     }
 
     public String toString(){
