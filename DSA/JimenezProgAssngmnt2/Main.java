@@ -21,24 +21,27 @@ import java.io.*;
 public class Main {
 
     public static void main(String[] args) {
-        Scanner console = new Scanner(System.in);
         LLStack result = new LLStack();
-        double decimal;
-        int base;
-        String baseStr;
-        
-        //user input
-        System.out.println("Enter decimal value: ");
-        decimal = Double.parseDouble(console.nextLine());
-        System.out.println("Enter Base: ");
-        base = Integer.parseInt(console.nextLine());
-
-        decimalToBase(base, decimal, result);
-        System.out.printf("Base %d Form: ", base);
+        inputData(result);
         System.out.println(result.toString());
     }
     
+    static void inputData(LLStack result){
+        Scanner console = new Scanner(System.in);
+        double decimal;
+        int base;
+        
+        System.out.println("Decimal Number: ");
+        decimal = Double.parseDouble(console.nextLine());
+        System.out.println("Enter Base: ");
+        base = Integer.parseInt(console.nextLine());
+        console.close();
+
+        System.out.printf("Converted to base %d: ", base);
+        decimalToBase(base, decimal, result);
+    }
     static void decimalToBase(int base, double decimal, LLStack stack){
+        
         while((int)decimal > 0){
             int remainder = (int) decimal%base;
             String digit = getDigit(remainder);
