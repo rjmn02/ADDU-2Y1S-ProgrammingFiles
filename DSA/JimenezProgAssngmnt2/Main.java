@@ -19,43 +19,57 @@ import java.util.*;
 import java.io.*;
 
 public class Main {
-
+    static Scanner console = new Scanner(System.in);
     public static void main(String[] args) {
+        Scanner console = new Scanner(System.in);
         LLStack stack = new LLStack();
-        inputData(stack);
-        System.out.println(stack.toString());
+
+        double decimal = getDecimal();
+        int base = getBase();
+
+        if(base == -1){
+            System.out.println("Invalid Base. Must be between 2 and 27");
+        }
+        else{
+            decimalToBase(base, decimal, stack);
+            System.out.printf("Decimal Number Converted to Base-%d:\n", base);
+            System.out.println(stack.toString());
+        }
     }
     
-    static void inputData(LLStack stack){
-        Scanner console = new Scanner(System.in);
-        double decimal;
-        int base;
-        
+    static double getDecimal(){
         System.out.println("Decimal Number: ");
-        decimal = Double.parseDouble(console.nextLine());
-        System.out.println("Enter Base: ");
-        base = Integer.parseInt(console.nextLine());
-        console.close();
+        double decimal = Double.parseDouble(console.nextLine());
 
-        System.out.printf("Converted to base %d: ", base);
-        decimalToBase(base, decimal, stack);
+        return decimal;
     }
-    static void decimalToBase(int base, double decimal, LLStack stack){
-        if(base < 27){
-            while((int)decimal > 0){
-            int remainder = (int) decimal%base;
-            String digit = getDigit(remainder);
 
-            stack.push(digit);
+    static int getBase(){
+        System.out.println("Base: ");
+        int base = Integer.parseInt(console.nextLine());
+
+        if(base > 1 && base < 28)
+            return base;
+        else
+            return -1;
+    }
+
+    static void decimalToBase(int base, double decimal, LLStack stack){
+        if(base > 1 && base < 28){
+            while((int)decimal != 0){
+            int remainder = (int) decimal%base;
+            String rmdrValue = getRmdrValue(Math.abs(remainder));
+
+            stack.push(rmdrValue);
             decimal /= base;
             }
-        }else
-            System.out.println("Invalid base value, must be <= 27");
+        }
     }
-    static String getDigit(int r){
+
+    static String getRmdrValue(int r){
         String letters = "ABCDEFGHJIKLMNOPQR";
         char[] lettersArr = letters.toCharArray();
-        if(r >= 10){
+        if(r > 9){
             return String.valueOf(lettersArr[r-10]);
         }else{
             return String.valueOf(r);
