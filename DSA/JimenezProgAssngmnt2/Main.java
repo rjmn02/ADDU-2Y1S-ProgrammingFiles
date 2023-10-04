@@ -48,10 +48,10 @@ public class Main {
         
     }
     static String getDigit(int r){
-        String digits = "ABCDEFGHJIKLMNOPQR";
-        char[] digitChArr = digits.toCharArray();
+        String letters = "ABCDEFGHJIKLMNOPQR";
+        char[] lettersArr = letters.toCharArray();
         if(r >= 10){
-            return String.valueOf(digitChArr[r-10]);
+            return String.valueOf(lettersArr[r-10]);
         }else{
             return String.valueOf(r);
         }
