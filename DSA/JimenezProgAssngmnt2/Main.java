@@ -66,7 +66,7 @@ public class Main {
     }
 
     static String getRmdrValue(int r){
-        String letters = "ABCDEFGHJIKLMNOPQR";
+        String letters = "ABCDEFGHIJKLMNOPQR";
         char[] lettersArr = letters.toCharArray();
         if(r > 9){
             return String.valueOf(lettersArr[r-10]);
