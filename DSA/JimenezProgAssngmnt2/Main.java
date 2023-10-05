@@ -23,7 +23,7 @@ public class Main {
     public static void main(String[] args) {
         LLStack stack = new LLStack();
 
-        double decimal = getDecimal();
+        int decimal = (int) getDecimal();
         int base = getBase();
 
         if(base == -1){
@@ -53,9 +53,9 @@ public class Main {
             return -1;
     }
 
-    static void decimalToBase(int base, double decimal, LLStack stack){
+    static void decimalToBase(int base, int decimal, LLStack stack){
         if(base > 1 && base < 28){
-            while((int)decimal != 0){
+            while(decimal != 0){
             int remainder = (int) decimal%base;
             String rmdrValue = getRmdrValue(Math.abs(remainder));
 
