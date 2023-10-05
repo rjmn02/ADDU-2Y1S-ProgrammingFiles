@@ -26,31 +26,43 @@ public class Main {
         int decimal = (int) getDecimal();
         int base = getBase();
 
-        if(base == -1){
-            System.out.println("Invalid Base. Must be between 2 and 27");
-        }
-        else{
-            decimalToBase(base, decimal, stack);
-            System.out.printf("Decimal Number Converted to Base-%d:\n", base);
-            System.out.println(stack.toString());
-        }
+        decimalToBase(base, decimal, stack);
+        System.out.printf("DECIMAL NUMBER CONVERTED TO BASE-%d:\n", base);
+        System.out.println(stack.toString());
+        
     }
     
     static double getDecimal(){
-        System.out.println("Decimal Number: ");
-        double decimal = Double.parseDouble(console.nextLine());
+        double decimal;
+
+        while(true){
+            System.out.println("DECIMAL NUMBER: ");
+            if(console.hasNextDouble()){
+                decimal = Double.parseDouble(console.nextLine());
+                break;
+            }else{
+                console.nextLine();
+                System.out.println("Invalid Decimal Value.");
+            }
+        }
 
         return decimal;
     }
 
     static int getBase(){
-        System.out.println("Base: ");
-        int base = Integer.parseInt(console.nextLine());
-
-        if(base > 1 && base < 28)
-            return base;
-        else
-            return -1;
+        int base;
+        while(true){
+            System.out.println("BASE: ");
+            if(console.hasNextInt()){
+                base = Integer.parseInt(console.nextLine());
+                if(base > 1 && base < 28)
+                    break;
+            }else{
+                console.nextLine();
+                System.out.println("Invalid Base. Must be between 2 and 27");
+            }
+        }
+        return base;
     }
 
     static void decimalToBase(int base, int decimal, LLStack stack){
