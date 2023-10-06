@@ -15,7 +15,6 @@ more symbols. Therefore, use capital letters. For example, a hexadecimal system
 requires 16 digits: 0, 1, . . ., 9, A, B, C, D, E, F. In this system, decimal number 26 is
 equal to 1A in hexadecimal notation, because 26/16 = 1 remainder 10 (that is, A),
 and 1/16 = 0 remainder 1. */
-
 import java.util.*;
 import java.io.*;
 
@@ -29,7 +28,7 @@ public class Main {
 
         decimalToBase(base, decimal, stack);
         System.out.printf("DECIMAL NUMBER CONVERTED TO BASE-%d:\n", base);
-        System.out.println(stack.toString());
+        stack.displayStack();
         
     }
     

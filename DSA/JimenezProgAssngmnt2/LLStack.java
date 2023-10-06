@@ -10,13 +10,13 @@ public class LLStack {
     }
 
     public void push(Object val){
-        LList.addFirst(val);
+        LList.addLast(val);
     }
 
     public Object pop(){
         if(!isEmpty()){
-            LList.removeFirst();
-            return LList.getFirst();
+            LList.removeLast();
+            return LList.getLast();
         }
         else{
             return null;
@@ -27,10 +27,6 @@ public class LLStack {
         LList.clear();
     }
 
-    public String toString(){
-        return LList.toString();
-    }
-
     public Object topEl(){
         if(!isEmpty())
             return LList.getFirst();
@@ -38,4 +34,9 @@ public class LLStack {
             return null;
     }
     
+    public void displayStack(){
+        for (int i = 0; i < LList.size(); i++) {
+            System.out.print(pop());
+        }
+    }
 }
