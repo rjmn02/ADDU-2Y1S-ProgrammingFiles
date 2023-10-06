@@ -27,7 +27,7 @@ public class Main {
         int base = getBase();
 
         decimalToBase(base, decimal, stack);
-        display(base, decimal, stack);
+        displayStack(base, decimal, stack);
     }
 
     static double getDecimal(){
@@ -85,13 +85,13 @@ public class Main {
         }
     }
 
-    static void display(int base, int decimal, LLStack stack){
+    static void displayStack(int base, int decimal, LLStack stack){
         System.out.printf("DECIMAL NUMBER CONVERTED TO BASE-%d:\n", base);
         if(decimal < 0){
             System.out.print("-");
-            stack.displayStack();
+            stack.popAll();
+        }else{
+            stack.popAll();
         }
-        else
-            stack.displayStack();
     }
 }

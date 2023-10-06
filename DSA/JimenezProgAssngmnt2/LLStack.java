@@ -30,9 +30,11 @@ public class LLStack {
         else
             return null;
     }
-    
-    public void displayStack(){
-        while(!isEmpty())
+
+    public void popAll(){
+        while(!(isEmpty())){
             System.out.print(pop());
+        }
     }
+    
 }
