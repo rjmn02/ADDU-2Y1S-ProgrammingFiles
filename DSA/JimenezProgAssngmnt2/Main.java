@@ -73,11 +73,11 @@ public class Main {
     static void decimalToBase(int base, int decimal, LLStack stack){
         if(base > 1 && base < 28){
             while(decimal != 0){
-            int remainder = (int) decimal%base;
-            String rmdrValue = getRmdrValue(Math.abs(remainder));
+                int remainder = (int) decimal%base;
+                String rmdrValue = getRmdrValue(Math.abs(remainder));
 
-            stack.push(rmdrValue);
-            decimal /= base;
+                stack.push(rmdrValue);
+                decimal /= base;
             }
         }
     }
