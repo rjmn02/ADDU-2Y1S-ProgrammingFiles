@@ -27,9 +27,14 @@ public class Main {
         int base = getBase();
 
         decimalToBase(base, decimal, stack);
-        System.out.printf("DECIMAL NUMBER CONVERTED TO BASE-%d:\n", base);
-        stack.displayStack();
         
+        System.out.printf("DECIMAL NUMBER CONVERTED TO BASE-%d:\n", base);
+        if(decimal < 0){
+            System.out.print("-");
+            stack.displayStack();
+        }
+        else
+            stack.displayStack();
     }
     
     static double getDecimal(){
@@ -86,4 +91,5 @@ public class Main {
             return String.valueOf(r);
         }
     }
+
 }

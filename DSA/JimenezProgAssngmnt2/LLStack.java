@@ -14,13 +14,10 @@ public class LLStack {
     }
 
     public Object pop(){
-        if(!isEmpty()){
-            LList.removeLast();
-            return LList.getLast();
-        }
-        else{
+        if(!isEmpty())
+            return LList.removeLast();
+        else
             return null;
-        }
     }
 
     public void clear(){
@@ -29,14 +26,13 @@ public class LLStack {
 
     public Object topEl(){
         if(!isEmpty())
-            return LList.getFirst();
+            return LList.getLast();
         else
             return null;
     }
     
     public void displayStack(){
-        for (int i = 0; i < LList.size(); i++) {
+        while(!isEmpty())
             System.out.print(pop());
-        }
     }
 }
