@@ -13,11 +13,14 @@ public class LLStack {
         LList.addFirst(val);
     }
 
-    public void pop(){
-        if(!isEmpty())
+    public Object pop(){
+        if(!isEmpty()){
             LList.removeFirst();
-        else
-            System.out.println("Stack is Empty");
+            return LList.getFirst();
+        }
+        else{
+            return null;
+        }
     }
 
     public void clear(){
