@@ -3,9 +3,9 @@ public class Main {
     public static void main(String[] args) {
         LLQueue q = new LLQueue();
         LLStck s = new LLStck();
-        System.out.println("##############QUEUE############# ");
+        System.out.println("############## QUEUE ############# ");
         queue(q);
-        System.out.println("\n\n##############STACK#############");
+        System.out.println("\n\n############## STACK #############");
         stack(s);
     }
 
