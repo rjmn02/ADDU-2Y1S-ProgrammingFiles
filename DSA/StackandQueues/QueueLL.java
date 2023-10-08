@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class LLQueue {
+public class QueueLL {
     LinkedList<Object> LList = new LinkedList<>();
 
     public void clear(){

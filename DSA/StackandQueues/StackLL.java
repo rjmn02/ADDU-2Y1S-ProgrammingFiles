@@ -1,6 +1,6 @@
 import java.util.LinkedList;
 
-public class LLStck{
+public class StackLL{
     LinkedList<Object> list = new LinkedList<>();
 
     public void clear(){
