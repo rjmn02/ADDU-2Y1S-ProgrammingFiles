@@ -6,20 +6,20 @@ public class Jimenez_Converter {
     public static void main(String[] args) {
         Stack<Object> stack = new Stack<>();
 
-        int decimal = (int) getDecimal();
+        int decimal = getDecimal();
         int base = getBase();
 
         decimalToBase(base, decimal, stack);
         displayStack(base, decimal, stack);
     }
 
-    static double getDecimal(){
-        double decimal;
+    static int getDecimal(){
+        int decimal;
 
         while(true){
             System.out.println("DECIMAL NUMBER: ");
-            if(console.hasNextDouble()){
-                decimal = Double.parseDouble(console.nextLine());
+            if(console.hasNextInt()){
+                decimal = Integer.parseInt(console.nextLine());
                 break;
             }else{
                 console.nextLine();
