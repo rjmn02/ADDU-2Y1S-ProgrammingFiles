@@ -4,7 +4,7 @@ import java.io.*;
 public class Main {
     static Scanner console = new Scanner(System.in);
     public static void main(String[] args) {
-        LLStack stack = new LLStack();
+        Stack<Object> stack = new Stack<>();
 
         int decimal = (int) getDecimal();
         int base = getBase();
@@ -46,7 +46,7 @@ public class Main {
         return base;
     }
 
-    static void decimalToBase(int base, int decimal, LLStack stack){
+    static void decimalToBase(int base, int decimal, Stack<Object> stack){
         if(base > 1 && base < 28){
             while(decimal != 0){
                 int remainder = (int) decimal%base;
@@ -68,13 +68,10 @@ public class Main {
         }
     }
 
-    static void displayStack(int base, int decimal, LLStack stack){
+    static void displayStack(int base, int decimal, Stack<Object> stack){
         System.out.printf("DECIMAL NUMBER CONVERTED TO BASE-%d:\n", base);
-        if(decimal < 0){
-            System.out.print("-");
-            stack.popAll();
-        }else{
-            stack.popAll();
+        while(!(stack.isEmpty())){
+            System.out.println(stack.pop());
         }
     }
 }
