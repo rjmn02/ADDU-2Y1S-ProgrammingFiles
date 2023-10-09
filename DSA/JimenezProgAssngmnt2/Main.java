@@ -70,8 +70,13 @@ public class Main {
 
     static void displayStack(int base, int decimal, Stack<Object> stack){
         System.out.printf("DECIMAL NUMBER CONVERTED TO BASE-%d:\n", base);
-        while(!(stack.isEmpty())){
-            System.out.println(stack.pop());
+        if(decimal < 0){
+            System.out.print("-");
+            while(!(stack.isEmpty()))
+                System.out.print(stack.pop());
+        }else{
+            while(!(stack.isEmpty()))
+                System.out.print(stack.pop());
         }
     }
 }
