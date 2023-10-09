@@ -49,7 +49,7 @@ public class Jimenez_Converter {
         if(base > 1 && base < 10){
             while(decimal != 0){
                 int remainder = (int) decimal%base;
-                stack.push(remainder);
+                stack.push(Math.abs(remainder));
                 decimal /= base;
             }
         }
