@@ -5,7 +5,6 @@ public class Jimenez_Converter {
     static Scanner console = new Scanner(System.in);
     public static void main(String[] args) {
         Stack<Object> stack = new Stack<>();
-
         int decimal = getDecimal();
         int base = getBase();
 
