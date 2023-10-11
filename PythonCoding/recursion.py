@@ -1,5 +1,6 @@
-def factorial(n):
+def fib(n):
     if n == 0:
         return 1
-    return n * factorial(n-1)
-print(factorial(6))
+    return fib(n-1) + fib(n-2)
+
+print(fib(5))
