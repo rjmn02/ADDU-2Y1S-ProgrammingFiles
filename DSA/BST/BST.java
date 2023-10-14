@@ -1,4 +1,3 @@
-import org.w3c.dom.Node;
 
 public class BST {
 
@@ -12,16 +11,36 @@ public class BST {
         if(root == null){
             root = node;
             return root;
-        }else if{root.data < node.data}{
-            return insertHelper(root.left, node);
+        }else if(root.data < node.data){
+            root.right = insertHelper(root.right, node);
+        }else {
+            root.left =  insertHelper(root.left, node);
         }
-        return null;
+        return root;
     }
 
-    public void remove(){
+    public void remove(int key){
+        if(search(key)){
+            this.root = removeHelper(this.root, key);
+        }
+    }
+    private BSTNode removeHelper(BSTNode root, int key){
+        if(root == null){
+            return null;
+        }else if(root.data < key){
+            root.right = removeHelper(root.right, key);
+        }else if (root.data > key){
+            root.left = removeHelper(root.left, key);
+        }else{
+            if(root.left == null && root.right == null){
+                root = null;
+            }else if(){
+
+            }
+        }
 
     }
-    public void removeHelper(){}
+
     public boolean search(int key){
         return searchHelper(this.root, key) != null;
     }
@@ -36,6 +55,8 @@ public class BST {
             return searchHelper(root.right, key);
         }
     }
+
+
 
     public void inorder(){
         inorderHelper(this.root);

@@ -1,5 +1,4 @@
-
-public class UseBST {
+public class UseBST{
     public static void main(String[] args) {
         BST tree = new BST();
         tree.insert(35);
@@ -10,9 +9,10 @@ public class UseBST {
         tree.insert(57);
         tree.insert(65);
         tree.insert(68);
+        //35,10,5,24,58,57,65,68
 
-        System.out.println(tree.search(35));
         System.out.println(tree.search(0));
-        tree.inorder();
+        System.out.println(tree.search(68));
+        
     }
 }
