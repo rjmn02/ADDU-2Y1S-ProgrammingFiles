@@ -15,35 +15,14 @@ public class BST {
             root.right = insertHelper(root.right, node);
         }else {
             root.left =  insertHelper(root.left, node);
-        }
+        }  
         return root;
-    }
-
-    public void remove(int key){
-        if(search(key)){
-            this.root = removeHelper(this.root, key);
-        }
-    }
-    private BSTNode removeHelper(BSTNode root, int key){
-        if(root == null){
-            return null;
-        }else if(root.data < key){
-            root.right = removeHelper(root.right, key);
-        }else if (root.data > key){
-            root.left = removeHelper(root.left, key);
-        }else{
-            if(root.left == null && root.right == null){
-                root = null;
-            }else if(){
-
-            }
-        }
-
     }
 
     public boolean search(int key){
         return searchHelper(this.root, key) != null;
     }
+
     private BSTNode searchHelper(BSTNode root, int key){
         if(root == null){
             return null;
@@ -56,8 +35,7 @@ public class BST {
         }
     }
 
-
-
+    //traversals
     public void inorder(){
         inorderHelper(this.root);
     }
@@ -68,4 +46,27 @@ public class BST {
             inorderHelper(root.right);
         }
     }
+
+    public void preorder(){
+        preorderHelper(this.root);
+    }
+    private void preorderHelper(BSTNode root) {
+        if (root != null) {
+            System.out.print(root.data + " ");
+            preorderHelper(root.left);
+            preorderHelper(root.right);
+        }
+    }
+
+    public void postorder(){
+        postorderHelper(this.root);
+    }
+    private void postorderHelper(BSTNode root) {
+        if (root != null) {
+            postorderHelper(root.left);
+            postorderHelper(root.right);
+            System.out.print(root.data + " ");
+        }
+    }
+
 }
