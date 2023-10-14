@@ -13,6 +13,7 @@ public class UseBST{
 
         System.out.println(tree.search(0));
         System.out.println(tree.search(68));
+        System.out.println(tree.search(58));
         tree.preorder();
         System.out.println(" ");
         tree.inorder();
