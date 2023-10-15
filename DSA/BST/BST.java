@@ -5,66 +5,66 @@ public class BST {
 
     public void insert(int key){
         BSTNode node = new BSTNode(key);
-        this.root = insertHelper(this.root, node);
+        this.root = insertRecursion(this.root, node);
     }
-    private BSTNode insertHelper(BSTNode root, BSTNode node){
+    private BSTNode insertRecursion(BSTNode root, BSTNode node){
         if(root == null){
             root = node;
             return root;
         }else if(root.data < node.data){
-            root.right = insertHelper(root.right, node);
+            root.right = insertRecursion(root.right, node);
         }else {
-            root.left =  insertHelper(root.left, node);
+            root.left =  insertRecursion(root.left, node);
         }  
         return root;
     }
 
     public boolean search(int key){
-        return searchHelper(this.root, key) != null;
+        return searchRecursion(this.root, key) != null;
     }
 
-    private BSTNode searchHelper(BSTNode root, int key){
+    private BSTNode searchRecursion(BSTNode root, int key){
         if(root == null){
             return null;
         }else if(root.data == key){
             return root;
         }else if(root.data > key){
-            return searchHelper(root.left, key);
+            return searchRecursion(root.left, key);
         }else {
-            return searchHelper(root.right, key);
+            return searchRecursion(root.right, key);
         }
     }
 
     //traversals
     public void inorder(){
-        inorderHelper(this.root);
+        inorderRecursion(this.root);
     }
-    private void inorderHelper(BSTNode root) {
+    private void inorderRecursion(BSTNode root) {
         if (root != null) {
-            inorderHelper(root.left);
+            inorderRecursion(root.left);
             System.out.print(root.data + " ");
-            inorderHelper(root.right);
+            inorderRecursion(root.right);
         }
     }
 
     public void preorder(){
-        preorderHelper(this.root);
+        preorderRecursion(this.root);
     }
-    private void preorderHelper(BSTNode root) {
+    private void preorderRecursion(BSTNode root) {
         if (root != null) {
             System.out.print(root.data + " ");
-            preorderHelper(root.left);
-            preorderHelper(root.right);
+            preorderRecursion(root.left);
+            preorderRecursion(root.right);
         }
     }
 
     public void postorder(){
-        postorderHelper(this.root);
+        postorderRecursion(this.root);
     }
-    private void postorderHelper(BSTNode root) {
+    private void postorderRecursion(BSTNode root) {
         if (root != null) {
-            postorderHelper(root.left);
-            postorderHelper(root.right);
+            postorderRecursion(root.left);
+            postorderRecursion(root.right);
             System.out.print(root.data + " ");
         }
     }
