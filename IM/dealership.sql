@@ -32,12 +32,14 @@ CREATE TABLE IF NOT EXISTS
 Car(
 	SERIAL_NUMBER INT NOT NULL auto_increment,
 	CUSTOMER_ID INT,
-	brand varchar(50),
 	model_year YEAR,
+	brand varchar(50),
 	model varchar(50),
 	variant varchar(50),
+	transmission varchar(5),
+	body_type varchar(50),
+	fuel_type varchar(50),
 	price DOUBLE,
-	transmission varchar(20),
     
 	PRIMARY KEY (SERIAL_NUMBER),
 	FOREIGN KEY (CUSTOMER_ID) REFERENCES Customer(CUSTOMER_ID)
