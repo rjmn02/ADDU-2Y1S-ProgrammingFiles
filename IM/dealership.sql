@@ -1,10 +1,10 @@
 CREATE TABLE IF NOT EXISTS
 Employee(
 	EMPLOYEE_ID INT NOT NULL auto_increment,
-	employee_lastname varchar(20),
-	employee_firstname varchar(20),
+	employee_lastname varchar(50),
+	employee_firstname varchar(50),
 	employee_phonenumber varchar(11),
-    job_title varchar(20),
+    job_title varchar(100),
 
 	PRIMARY KEY(EMPLOYEE_ID)
 );
@@ -21,8 +21,8 @@ Salesperson(
 CREATE TABLE IF NOT EXISTS
 Customer(
 	CUSTOMER_ID INT NOT NULL auto_increment,
-	lastname varchar(20),
-	firstname varchar(20),
+	lastname varchar(50),
+	firstname varchar(50),
 	phonenumber varchar(11),
 
 	PRIMARY KEY (CUSTOMER_ID)
@@ -32,12 +32,12 @@ CREATE TABLE IF NOT EXISTS
 Car(
 	SERIAL_NUMBER INT NOT NULL auto_increment,
 	CUSTOMER_ID INT,
-	brand varchar(20),
+	brand varchar(50),
 	model_year YEAR,
-	model varchar(20),
-	variant varchar(20),
+	model varchar(50),
+	variant varchar(50),
 	price DOUBLE,
-	transmission varchar(10),
+	transmission varchar(20),
     
 	PRIMARY KEY (SERIAL_NUMBER),
 	FOREIGN KEY (CUSTOMER_ID) REFERENCES Customer(CUSTOMER_ID)
@@ -81,7 +81,7 @@ CREATE TABLE IF NOT EXISTS
 Service(
 	SERVICE_ID INT NOT NULL auto_increment,
 	MECHANIC_ID INT,
-	service_type varchar(20),
+	service_type varchar(100),
 
     PRIMARY KEY(SERVICE_ID),
     FOREIGN KEY(MECHANIC_ID) REFERENCES Mechanic(MECHANIC_ID)
@@ -98,7 +98,7 @@ Maintenance(
 CREATE TABLE IF NOT EXISTS
 Part(
 	PART_ID INT NOT NULL auto_increment,
-	part_name varchar(20),
+	part_name varchar(100),
 	price DOUBLE,
 
 	PRIMARY KEY(PART_ID)
