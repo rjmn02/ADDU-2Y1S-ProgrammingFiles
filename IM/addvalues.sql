@@ -30,8 +30,8 @@ INSERT INTO Mechanic(EMPLOYEE_ID)
 VALUES (@ID);
 
 INSERT INTO Employee(employee_lastname, employee_firstname, employee_phonenumber, job_title)
-VALUES("Jab", "Pablo", "09649636671", "Mechanic")
-SET @ID = LAST_INSERT_ID()
+VALUES("Ray", "Jhon", "09753612835", "Mechanic");
+SET @ID = LAST_INSERT_ID();
 INSERT INTO Mechanic(EMPLOYEE_ID)
 VALUES (@ID);
 
@@ -56,7 +56,7 @@ INSERT INTO Salesperson(EMPLOYEE_ID)
 VALUES (@ID);
 
 
-#Other Staff
+#3 other Staff
 INSERT INTO Employee(employee_lastname, employee_firstname, employee_phonenumber, job_title)
 VALUES("Kim", "Chaewon", "09654378913", "Accountant");
 
