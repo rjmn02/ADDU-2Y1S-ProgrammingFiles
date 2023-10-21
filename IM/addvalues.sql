@@ -30,8 +30,8 @@ INSERT INTO Mechanic(EMPLOYEE_ID)
 VALUES (@ID);
 
 INSERT INTO Employee(employee_lastname, employee_firstname, employee_phonenumber, job_title)
-VALUES("Ray", "Jhon", "09753612835", "Mechanic");
-SET @ID = LAST_INSERT_ID();
+VALUES("Jab", "Pablo", "09649636671", "Mechanic")
+SET @ID = LAST_INSERT_ID()
 INSERT INTO Mechanic(EMPLOYEE_ID)
 VALUES (@ID);
 
