@@ -92,3 +92,7 @@ VALUES("White", "Walter", "09832512096", "Receptionist");
 
 INSERT INTO Employee(employee_lastname, employee_firstname, employee_phonenumber, job_title)
 VALUES("Pinkman", "Jesse", "09914562187", "Receptionist");
+
+#10 customers
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Bacon", "James", "09114613892");
