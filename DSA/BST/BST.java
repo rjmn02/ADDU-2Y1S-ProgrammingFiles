@@ -35,6 +35,26 @@ public class BST {
         }
     }
 
+    public void remove(int key){
+        if(search(key)){
+            removeRecursion(this.root, key);
+        }
+    }
+
+    public void removeRecursion(BSTNode root, int key){
+        if(root.data < key){
+            removeRecursion(root.right, key);
+        }else if(root.data > key){
+            removeRecursion(root.left, key);
+        }else {
+            if(root.right == null && root.left == null){
+                root = null;
+            }else if(root.right == null){
+                //find predecessor
+            }
+        }
+    }
+
     //traversals
     public void inorder(){
         inorderRecursion(this.root);
