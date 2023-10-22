@@ -93,10 +93,35 @@ VALUES("White", "Walter", "09832512096", "Receptionist");
 INSERT INTO Employee(employee_lastname, employee_firstname, employee_phonenumber, job_title)
 VALUES("Pinkman", "Jesse", "09914562187", "Receptionist");
 
+
 #10 customers
 INSERT INTO Customer(lastname, firstname, phonenumber)
-VALUES("Bacon", "James", "09114613892");
+VALUES("Dimagiba", "Gusion", "09114613892");
 
 INSERT INTO Customer(lastname, firstname, phonenumber)
 VALUES("Wick", "John", "09653458010");
+
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Trump", "Donald", "09138283693");
+
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Pacquiao", "Manny", "09392838396");
+
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Tesla", "Nikola", "09663429847");
+
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Jordan", "Michael", "09664392748");
+
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Babbage", "Charles", "09748392643");
+
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Yeager", "Eren", "09473829346");
+
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Ford", "Henry", "09653458010");
+
+INSERT INTO Customer(lastname, firstname, phonenumber)
+VALUES("Bolt", "Usain", "09564385100");
 
