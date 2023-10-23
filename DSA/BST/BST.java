@@ -1,92 +1,123 @@
+import java.util.*;
 
 public class BST {
 
     protected BSTNode root;
 
-    public void insert(int key){
+    public void insert(int key) {
         BSTNode node = new BSTNode(key);
         this.root = insertRecursion(this.root, node);
     }
-    private BSTNode insertRecursion(BSTNode root, BSTNode node){
-        if(root == null){
+
+    private BSTNode insertRecursion(BSTNode root, BSTNode node) {
+        if (root == null) {
             root = node;
             return root;
-        }else if(root.data < node.data){
+        } else if (root.data < node.data) {
             root.right = insertRecursion(root.right, node);
-        }else {
-            root.left =  insertRecursion(root.left, node);
-        }  
+        } else {
+            root.left = insertRecursion(root.left, node);
+        }
         return root;
     }
 
-    public boolean search(int key){
+    public boolean search(int key) {
         return searchRecursion(this.root, key) != null;
     }
 
-    private BSTNode searchRecursion(BSTNode root, int key){
-        if(root == null){
+    private BSTNode searchRecursion(BSTNode root, int key) {
+        if (root == null) {
             return null;
-        }else if(root.data == key){
+        } else if (root.data == key) {
             return root;
-        }else if(root.data > key){
+        } else if (root.data > key) {
             return searchRecursion(root.left, key);
-        }else {
+        } else {
             return searchRecursion(root.right, key);
         }
     }
 
-    public void remove(int key){
-        if(search(key)){
+    public void remove(int key) {
+        if (search(key)) {
             removeRecursion(this.root, key);
         }
     }
 
-    public void removeRecursion(BSTNode root, int key){
-        if(root.data < key){
+    public void removeRecursion(BSTNode root, int key) {
+        if (root.data < key) {
             removeRecursion(root.right, key);
-        }else if(root.data > key){
+        } else if (root.data > key) {
             removeRecursion(root.left, key);
-        }else {
-            if(root.right == null && root.left == null){
+        } else {
+            if (root.right == null && root.left == null) {
                 root = null;
-            }else if(root.right == null){
-                //find predecessor
+            } else if (root.right == null) {
+                // find predecessor
             }
         }
     }
 
-    //traversals
-    public void inorder(){
+    // breadth first traversal (print by level)
+    public void breadthFirst() {
+        BSTNode p = root;
+        Queue<Object> queue = new LinkedList<>();
+        if (p != null) {
+            queue.add(p);
+            while (!queue.isEmpty()) {
+                p = (BSTNode) queue.remove();
+                System.out.print(p.data + " ");;
+                if (p.left != null)
+                    queue.add(p.left);
+                if (p.right != null)
+                    queue.add(p.right);
+            }
+    }
+}
+
+    // depth first traversals
+    public void inorder() {
         inorderRecursion(this.root);
     }
+
     private void inorderRecursion(BSTNode root) {
-        if (root != null) {
-            inorderRecursion(root.left);
-            System.out.print(root.data + " ");
-            inorderRecursion(root.right);
+        if (root == null) {
+            return;
         }
+
+        inorderRecursion(root.left);
+        System.out.print(root.data + " ");
+        inorderRecursion(root.right);
+
     }
 
-    public void preorder(){
+    public void preorder() {
         preorderRecursion(this.root);
     }
+
     private void preorderRecursion(BSTNode root) {
-        if (root != null) {
-            System.out.print(root.data + " ");
-            preorderRecursion(root.left);
-            preorderRecursion(root.right);
+        if (root == null) {
+            return;
         }
+
+        System.out.print(root.data + " ");
+        preorderRecursion(root.left);
+        preorderRecursion(root.right);
+
     }
 
-    public void postorder(){
+    public void postorder() {
         postorderRecursion(this.root);
     }
+
     private void postorderRecursion(BSTNode root) {
-        if (root != null) {
-            postorderRecursion(root.left);
-            postorderRecursion(root.right);
-            System.out.print(root.data + " ");
+        if (root == null) {
+            return;
         }
+
+        postorderRecursion(root.left);
+        postorderRecursion(root.right);
+        System.out.print(root.data + " ");
+
     }
 
 }
