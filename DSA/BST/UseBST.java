@@ -9,6 +9,7 @@ public class UseBST{
         tree.insert(20);
         tree.insert(31);
         tree.insert(29);
+        //13,10,2,12,25,20,31,29
 
         System.out.println(tree.search(2));
         System.out.println(tree.search(68));

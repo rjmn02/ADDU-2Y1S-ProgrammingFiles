@@ -64,12 +64,13 @@ public class BST {
         if (p != null) {
             queue.add(p);
             while (!queue.isEmpty()) {
-                p = (BSTNode) queue.remove();
+                p = (BSTNode) queue.peek();
                 System.out.print(p.data + " ");;
                 if (p.left != null)
                     queue.add(p.left);
                 if (p.right != null)
                     queue.add(p.right);
+                queue.remove();
             }
     }
 }
