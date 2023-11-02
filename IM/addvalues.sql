@@ -144,14 +144,9 @@ VALUES("2020-CURRENT HILUX WEATHER SHIELDS", 3943.45);
 INSERT INTO Part(part_name, price)
 VALUES("2020-CURRENT HILUX POWER STEERING PUMP", 17924.75);
 
-
 #https://www.carparts2u.com.au//files/results.php?par_make=TOYOTA&par_model=HILUX&par_year=23&par_category=&par_utility=&view=
 
-
 #SET CUSTOMERID IN CAR;
-#UNASSIGNED CUSTOMERS  
-#UNASSIGNED CAR 3 4 10 12 14
-
 UPDATE CAR
 SET CUSTOMER_ID = 4
 WHERE SERIAL_NUMBER = 9;
@@ -192,5 +187,117 @@ UPDATE CAR
 SET CUSTOMER_ID = 9
 WHERE SERIAL_NUMBER = 15;
 
-#Showroom Car
-#Customer Car
+
+#SERVICE
+INSERT INTO Service(MECHANIC_ID, service_type)
+VALUES(1, "Part Replacement");
+SET @SID1 = LAST_INSERT_ID();
+INSERT INTO Part_Replacement_Summary(SERVICE_ID, PART_ID, part_quantity) #fortuner LCA
+VALUES (@SID1, 1, 1);
+
+INSERT INTO Service(MECHANIC_ID, service_type)
+VALUES(1, "Part Replacement");
+SET @SID2 = LAST_INSERT_ID();
+INSERT INTO Part_Replacement_Summary(SERVICE_ID, PART_ID, part_quantity) #fortuner LCA 
+VALUES (@SID2, 2, 1);
+
+INSERT INTO Service(MECHANIC_ID, service_type)
+VALUES(3, "Part Replacement");
+SET @SID3 = LAST_INSERT_ID();
+INSERT INTO Part_Replacement_Summary(SERVICE_ID, PART_ID, part_quantity) #hilus weather shields 
+VALUES (@SID3, 6, 2);
+
+INSERT INTO Service(MECHANIC_ID, service_type)
+VALUES(2, "Maintenance");
+SET @SID4 = LAST_INSERT_ID();
+INSERT INTO Maintenance(SERVICE_ID, maintenance_description)
+VALUES (@SID4, "Oil Change");
+
+INSERT INTO Service(MECHANIC_ID, service_type)
+VALUES(2, "Maintenance");
+SET @SID5 = LAST_INSERT_ID();
+INSERT INTO Maintenance(SERVICE_ID, maintenance_description)
+VALUES (@SID5, "ECU Calibration");
+
+INSERT INTO Service(MECHANIC_ID, service_type)
+VALUES(3, "Maintenance");
+SET @SID6 = LAST_INSERT_ID();
+INSERT INTO Maintenance(SERVICE_ID, maintenance_description)
+VALUES (@SID6, "Fuel Filter Change");
+
+
+#Showroom Car 
+INSERT INTO Showroom_Car(SERIAL_NUMBER)
+VALUES(3);
+INSERT INTO Showroom_Car(SERIAL_NUMBER)
+VALUES(4);
+INSERT INTO Showroom_Car(SERIAL_NUMBER)
+VALUES(10);
+INSERT INTO Showroom_Car(SERIAL_NUMBER)
+VALUES(12);
+INSERT INTO Showroom_Car(SERIAL_NUMBER)
+VALUES(14);
+INSERT INTO Showroom_Car(SERIAL_NUMBER, CUSTOMER_ID) #hilux
+VALUES(8, 5);
+INSERT INTO Showroom_Car(SERIAL_NUMBER, CUSTOMER_ID) #fortuner
+VALUES(2, 7);
+
+
+#Customer Car and service history
+INSERT INTO Service_History(SERVICE_ID)
+VALUES(1);
+SET @SH_ID1 = LAST_INSERT_ID();
+INSERT INTO Customer_Car(SERIAL_NUMBER, CUSTOMER_ID, SERVICE_HISTORY_ID) #fortuner
+VALUES(1, 8, @SH_ID1);
+
+INSERT INTO Service_History(SERVICE_ID)
+VALUES(4);
+SET @SH_ID2 = LAST_INSERT_ID();
+INSERT INTO Customer_Car(SERIAL_NUMBER, CUSTOMER_ID, SERVICE_HISTORY_ID) #innova
+VALUES(5, 3, @SH_ID2);
+
+INSERT INTO Service_History(SERVICE_ID)
+VALUES(4);
+SET @SH_ID3 = LAST_INSERT_ID();
+INSERT INTO Customer_Car(SERIAL_NUMBER, CUSTOMER_ID, SERVICE_HISTORY_ID) #innova
+VALUES(6, 2, @SH_ID3);
+
+INSERT INTO Service_History(SERVICE_ID)
+VALUES(3);
+SET @SH_ID4 = LAST_INSERT_ID();
+INSERT INTO Customer_Car(SERIAL_NUMBER, CUSTOMER_ID, SERVICE_HISTORY_ID) #hilux
+VALUES(7, 6, @SH_ID4);
+
+INSERT INTO Service_History(SERVICE_ID)
+VALUES(6);
+SET @SH_ID5 = LAST_INSERT_ID();
+INSERT INTO Customer_Car(SERIAL_NUMBER, CUSTOMER_ID, SERVICE_HISTORY_ID) #hilux
+VALUES(9, 4, @SH_ID5);
+
+INSERT INTO Service_History(SERVICE_ID)
+VALUES(5);
+SET @SH_ID6 = LAST_INSERT_ID();
+INSERT INTO Customer_Car(SERIAL_NUMBER, CUSTOMER_ID, SERVICE_HISTORY_ID) #vios
+VALUES(11, 10, @SH_ID6);
+
+#invoice
+INSERT INTO Invoice(EMPLOYEE_ID, SERVICE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(1, 1, 8, 1, 5554.36, CURDATE());
+INSERT INTO Invoice(EMPLOYEE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(4, 7, 2, 1958000, CURDATE());
+INSERT INTO Invoice(EMPLOYEE_ID, SERVICE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(2, 4, 3, 5, 10000, CURDATE());
+INSERT INTO Invoice(EMPLOYEE_ID, SERVICE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(2, 4, 2, 6, 10000, CURDATE());
+INSERT INTO Invoice(EMPLOYEE_ID, SERVICE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(3, 3, 6, 7, 2*17924.75, CURDATE());
+INSERT INTO Invoice(EMPLOYEE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(4, 5, 8, 1306000, CURDATE());
+INSERT INTO Invoice(EMPLOYEE_ID, SERVICE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(,4,9);
+INSERT INTO Invoice(EMPLOYEE_ID, SERVICE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(,10,11);
+INSERT INTO Invoice(EMPLOYEE_ID, SERVICE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(,1,13);
+INSERT INTO Invoice(EMPLOYEE_ID, SERVICE_ID, CUSTOMER_ID, SERIAL_NUMBER, total_cost, date_issued)
+VALUES(,9,15);
