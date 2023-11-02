@@ -6,17 +6,6 @@ public class BSTMain{
         Scanner console = new Scanner(System.in);
         BST tree = new BST();
         inputData(tree);
-        System.out.println("Number to search: ");
-        int key = Integer.parseInt(console.nextLine());
-
-        if(tree.search(key)){
-            System.out.println("Value is in the tree");
-            System.out.println("Nodes searched: " + tree.count);
-        }
-        else{
-            System.out.println("Value is not in the tree.");
-            System.out.println("Nodes searched: " + tree.count);
-        }
     }
 
     static void inputData(BST tree){

@@ -46,7 +46,7 @@ Car(
 );
 
 CREATE TABLE IF NOT EXISTS
-0qa1Showroom_Car(
+Showroom_Car(
 	SERIAL_NUMBER INT NOT NULL,
 	CUSTOMER_ID INT,
 
