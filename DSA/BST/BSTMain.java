@@ -6,6 +6,10 @@ public class BSTMain{
         Scanner console = new Scanner(System.in);
         BST tree = new BST();
         inputData(tree);
+        tree.inorder();
+        tree.delete(19);
+        System.out.println("");
+        tree.inorder();
     }
 
     static void inputData(BST tree){

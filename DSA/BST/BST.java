@@ -36,83 +36,47 @@ public class BST {
         }
     }
 
-
-    public void deleteByMerging(int el) {
-        BSTNode tmp, node, p = root, prev = null;
-        while (p != null && p.data != el) { // find the node p
-            prev = p; // with element el;
-            if (p.data < el)
-                p = p.right;
-            else
-                p = p.left;
-        }
-        node = p;
-        if (p != null && p.data == el) {
-            if (node.right == null) // node has no right child: its left
-                node = node.left; // child (if any) is attached to its
-            // parent;
-            else if (node.left == null) // node has no left child: its right
-                node = node.right; // child is attached to its parent;
-            else { // be ready for merging subtrees;
-                tmp = node.left; // 1. move left
-                while (tmp.right != null) // 2. and then right as far as
-                    tmp = tmp.right; // possible;
-                tmp.right = // 3. establish the link between
-                        node.right; // the rightmost node of the left
-                // subtree and the right subtree;
-                node = node.left; // 4.
-            }
-            if (p == root)
-                root = node;
-            else if (prev.left == p)
-                prev.left = node;
-            else
-                prev.right = node; // 5.
-        } else if (root != null)
-            System.out.println("key " + el + " is not in the tree");
-        else
-            System.out.println("the tree is empty");
+    public void delete(int key){
+        this.root = deleteRecursion(this.root, key);
     }
     
-    public void deleteByCopying(int el) {
-        BSTNode node, p = root, prev = null;
-        while (p != null && p.data != el) { // find the node p
-            prev = p; // with element el;
-            if (p.data < el)
-                p = p.right;
-            else
-                p = p.left;
-        }
-        node = p;
-        if (p != null && p.data == el) {
-            if (node.right == null) // node has no right child;
-                node = node.left;
-            else if (node.left == null) // no left child for node;
-                node = node.right;
-            else {
-                BSTNode tmp = node.left; // node has both children;
-                BSTNode previous = node; // 1.
-                while (tmp.right != null) { // 2. find the rightmost
-                    previous = tmp; // position in the
-                    tmp = tmp.right; // left subtree of node;
+    private BSTNode deleteRecursion(BSTNode root, int key){
+        if(search(key)){
+            if(root.data < key){
+                root.right = deleteRecursion(root.right, key);
+            }else if(root.data > key){
+                root.left = deleteRecursion(root.left, key);
+            }else {
+                //case 1: leaf
+                if(root.left == null && root.right == null){
+                    return null;
                 }
-                node.data = tmp.data; // 3. overwrite the reference
-                // of the key being deleted;
-                if (previous == node) // if node's left child's
-                    previous.left = tmp.left; // right subtree is null;
-                else
-                    previous.right = tmp.left; // 4.
+                //case 2: one child
+                else if(root.left != null){
+                    return root.left;
+
+                }else if(root.right != null){
+                    return root.right;
+                }
+                //case 3: two children
+                else{
+                    BSTNode temp = findMin(root.left);
+                    root.data = temp.data;
+                    root.right = deleteRecursion(root.right, temp.data);
+                    
+                }
+            
             }
-            if (p == root)
-                root = node;
-            else if (prev.left == p)
-                prev.left = node;
-            else
-                prev.right = node;
-        } else if (root != null)
-            System.out.println("key " + el + " is not in the tree");
-        else
-            System.out.println("the tree is empty");
+            return root;
+        }
+        return null;
+    }
+
+    private BSTNode findMin(BSTNode node){
+        while(node.right != null){
+            node = node.right;
+        }
+        return node;
     }
 
     // breadth first traversal (print by level)
