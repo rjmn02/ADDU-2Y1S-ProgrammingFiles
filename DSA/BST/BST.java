@@ -2,7 +2,6 @@ import java.util.*;
 public class BST {
 
     protected BSTNode root;
-    protected int count;
 
     public void insert(int key) {
         BSTNode node = new BSTNode(key);
@@ -21,39 +20,22 @@ public class BST {
         return root;
     }
 
-    // public boolean search(int key) {
-    //     return searchRecursion(this.root, key) != null;
-    // }
-
-    // private BSTNode searchRecursion(BSTNode root, int key) {
-    //     if (root == null) {
-    //         return null;
-    //     } else if (root.data == key) {
-    //         return root;
-    //     } else if (root.data > key) {
-    //         return searchRecursion(root.left, key);
-    //     } else {
-    //         return searchRecursion(root.right, key);
-    //     }
-    // }
-    public boolean search(int key){
-        return searchHelper(this.root, key) != null;
+    public boolean search(int key) {
+        return searchRecursion(this.root, key) != null;
     }
 
-
-    public BSTNode searchHelper(BSTNode p, int key) {
-        while (p != null) {
-            count++;
-            if (key == p.data)
-                return p;
-            else if (key < p.data)
-                p = p.left;
-            else
-                p = p.right;
+    private BSTNode searchRecursion(BSTNode root, int key) {
+        if (root == null) {
+            return null;
+        } else if (root.data == key) {
+            return root;
+        } else if (root.data > key) {
+            return searchRecursion(root.left, key);
+        } else {
+            return searchRecursion(root.right, key);
         }
-        return null;
     }
-    
+
 
     public void deleteByMerging(int el) {
         BSTNode tmp, node, p = root, prev = null;
