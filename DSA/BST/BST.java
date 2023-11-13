@@ -87,7 +87,7 @@ public class BST {
             queue.add(p);
             while (!queue.isEmpty()) {
                 p = (BSTNode) queue.remove();
-                System.out.print(p.data + " ");;
+                System.out.print(p.data + " ");
                 if (p.left != null)
                     queue.add(p.left);
                 if (p.right != null)
