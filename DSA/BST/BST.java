@@ -47,18 +47,18 @@ public class BST {
             }else if(root.data > key){
                 root.left = deleteRecursion(root.left, key);
             }else {
-                //case 1: leaf
+                //case 1: node is a leaf
                 if(root.left == null && root.right == null){
                     return null;
                 }
-                //case 2: one child
+                //case 2: node has one child
                 else if(root.left != null){
                     return root.left;
 
                 }else if(root.right != null){
                     return root.right;
                 }
-                //case 3: two children
+                //case 3: node has two children
                 else{
                     BSTNode temp = findMin(root.left);
                     root.data = temp.data;
