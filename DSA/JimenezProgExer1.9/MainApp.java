@@ -5,11 +5,12 @@ import java.util.Scanner;
 
 public class MainApp {
     public static void main(String[] args) {
+        Scanner in = new Scanner(System.in);
         BST tree = new BST();
         inputData(tree);
 
-        int choice;
-        boolean selection = true
+        String choice;
+        boolean selection = true;
 
         while(true) {
             System.out.println("1: Show Software");
@@ -18,22 +19,33 @@ public class MainApp {
             System.out.println("4: Exit");
             
             System.out.println("Enter choice: ");
-            int choice = in.nextLine();
+            choice = in.nextLine();
             
-            switch(menuItems.toUpperCase()){
-                case 1:
-                    tree.inoder()
-                case 2:
-                    viewCart(shoppingCart);
+            switch(choice){
+                case "1":
+                    showSoftware(tree);
+                case "2":
+                    addSoftware(tree);
                     break;
-                case 3:
-                    editItem(shoppingCart);
+                case "3":
+                    sellSoftware(tree);
                     break;
-                case 4:
+                case "4":
                     selection = false;
                     break;
             }
         }
+
+    }
+
+
+    static void showSoftware(BST tree){
+        tree.inorder();
+    }
+    static void sellSoftware(BST tree){
+        s
+    }
+    static void addSoftware(BST tree){
 
     }
 
