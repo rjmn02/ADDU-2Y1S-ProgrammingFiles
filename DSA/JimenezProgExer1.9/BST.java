@@ -36,15 +36,15 @@ public class BST {
     }
 
     public void delete(Software key){
-        this.root = deleteRecursion(this.root, key);
+        this.root = deleteByCopyingRecursion(this.root, key);
     }
     
-    private Node deleteRecursion(Node root, int key){
+    private Node deleteByCopyingRecursion(Node root, Software key){
         if(search(key)){
             if(root.data < key){
-                root.right = deleteRecursion(root.right, key);
+                root.right = deleteByCopyingRecursion(root.right, key);
             }else if(root.data > key){
-                root.left = deleteRecursion(root.left, key);
+                root.left = deleteByCopyingRecursion(root.left, key);
             }else {
                 //case 1: node is a leaf
                 if(root.left == null && root.right == null){
@@ -61,7 +61,7 @@ public class BST {
                 else{
                     Node temp = findMin(root.left);
                     root.data = temp.data;
-                    root.right = deleteRecursion(root.right, temp.data);
+                    root.right = deleteByCopyingRecursion(root.right, temp.data);
                     
                 }
             
