@@ -8,33 +8,33 @@ public class MainApp {
         Scanner in = new Scanner(System.in);
         BST tree = new BST();
         inputData(tree);
+        showSoftware(tree);
+        // String choice;
+        // boolean selection = true;
 
-        String choice;
-        boolean selection = true;
-
-        while(true) {
-            System.out.println("1: Show Software");
-            System.out.println("2: Add Software");
-            System.out.println("3: Sell");
-            System.out.println("4: Exit");
+        // while(true) {
+        //     System.out.println("1: Show Software");
+        //     System.out.println("2: Add Software");
+        //     System.out.println("3: Sell");
+        //     System.out.println("4: Exit");
             
-            System.out.println("Enter choice: ");
-            choice = in.nextLine();
+        //     System.out.println("Enter choice: ");
+        //     choice = in.nextLine();
             
-            switch(choice){
-                case "1":
-                    showSoftware(tree);
-                case "2":
-                    addSoftware(tree);
-                    break;
-                case "3":
-                    sellSoftware(tree);
-                    break;
-                case "4":
-                    selection = false;
-                    break;
-            }
-        }
+        //     switch(choice){
+        //         case "1":
+        //             showSoftware(tree);
+        //         case "2":
+        //             addSoftware(tree);
+        //             break;
+        //         case "3":
+        //             sellSoftware(tree);
+        //             break;
+        //         case "4":
+        //             selection = false;
+        //             break;
+        //     }
+        // }
 
     }
 

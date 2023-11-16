@@ -8,10 +8,12 @@ public class BST {
     }
 
     private Node insertRecursion(Node root, Node node) {
+        CompareSoftware comp = new CompareSoftware();
+
         if (root == null) {
             root = node;
             return root;
-        } else if (root.data < node.data) {
+        } else if (comp.compare(root.data, node.data) < 0) {
             root.right = insertRecursion(root.right, node);
         } else {
             root.left = insertRecursion(root.left, node);
@@ -19,16 +21,19 @@ public class BST {
         return root;
     }
 
-    public boolean search(int key) {
+    public boolean search(Software key) {
         return searchRecursion(this.root, key) != null;
     }
 
     private Node searchRecursion(Node root, Software key) {
+        CompareSoftware comp = new CompareSoftware();
+
+
         if (root == null) {
             return null;
         } else if (root.data == key) {
             return root;
-        } else if (root.data > key) {
+        } else if (comp.compare(root.data, key) > 0) {
             return searchRecursion(root.left, key);
         } else {
             return searchRecursion(root.right, key);
@@ -40,10 +45,13 @@ public class BST {
     }
     
     private Node deleteByCopyingRecursion(Node root, Software key){
+        CompareSoftware comp = new CompareSoftware();
+
+
         if(search(key)){
-            if(root.data < key){
+            if(comp.compare(root.data, key) < 0){
                 root.right = deleteByCopyingRecursion(root.right, key);
-            }else if(root.data > key){
+            }else if(comp.compare(root.data, key) > 0){
                 root.left = deleteByCopyingRecursion(root.left, key);
             }else {
                 //case 1: node is a leaf
@@ -88,7 +96,7 @@ public class BST {
         }
 
         inorderRecursion(root.left);
-        System.out.print(root.data.toString());
+        System.out.print(root.data.toString() + "\n");
         inorderRecursion(root.right);
 
     }
