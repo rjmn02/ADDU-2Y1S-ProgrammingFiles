@@ -4,52 +4,69 @@ import java.io.IOException;
 import java.util.Scanner;
 
 public class MainApp {
+    static Scanner in = new Scanner(System.in);
     public static void main(String[] args) {
-        Scanner in = new Scanner(System.in);
-        BST tree = new BST();
+        SoftwareBST tree = new SoftwareBST();
         inputData(tree);
-        showSoftware(tree);
-        // String choice;
-        // boolean selection = true;
 
-        // while(true) {
-        //     System.out.println("1: Show Software");
-        //     System.out.println("2: Add Software");
-        //     System.out.println("3: Sell");
-        //     System.out.println("4: Exit");
+        String choice;
+        boolean selection = true;
+
+        while(selection) {
+            System.out.println("1: Show Software");
+            System.out.println("2: Add Software");
+            System.out.println("3: Sell");
+            System.out.println("4: Exit");
             
-        //     System.out.println("Enter choice: ");
-        //     choice = in.nextLine();
+            System.out.println("Enter choice: ");
+            choice = in.nextLine();
             
-        //     switch(choice){
-        //         case "1":
-        //             showSoftware(tree);
-        //         case "2":
-        //             addSoftware(tree);
-        //             break;
-        //         case "3":
-        //             sellSoftware(tree);
-        //             break;
-        //         case "4":
-        //             selection = false;
-        //             break;
-        //     }
-        // }
+            switch(choice){
+                case "1":
+                    showSoftware(tree);
+                    break;
+                case "2":
+                    addSoftware(tree);
+                    break;
+                case "3":
+                    sellSoftware(tree);
+                    break;
+                default:
+                    selection = false;
+                    break;
+            }
+        }
 
     }
 
 
-    static void showSoftware(BST tree){
+    static void showSoftware(SoftwareBST tree){
         tree.inorder();
     }
-    static void sellSoftware(BST tree){
+    static void sellSoftware(SoftwareBST tree){
+        System.out.println("Enter Software Name and Version Number");
+        String name = in.nextLine();
+        String ver = in.nextLine();
+
+        System.out.println("Quantity: ");
+        int quantity = Integer.parseInt(in.nextLine());
         
-    }
-    static void addSoftware(BST tree){
+        tree.deleteSoftware(new Software(name, ver), quantity);
 
     }
+    static void addSoftware(SoftwareBST tree){
+        System.out.println("Enter Software Name, Version Number and Price:");
+        String name = in.nextLine();
+        String ver = in.nextLine();
+        double price = Double.parseDouble(in.nextLine());
 
-    static void inputData(BST tree){
+        System.out.println("Quantity: ");
+        int quantity = Integer.parseInt(in.nextLine());
+        
+        tree.insertSoftare(new Software(name, ver, price), quantity);
+    }
+
+    static void inputData(SoftwareBST tree){
         try {
             FileReader fr = new FileReader("software.txt");
             Scanner scan = new Scanner(fr);
@@ -59,9 +76,6 @@ public class MainApp {
                 int quantity = Integer.parseInt(scan.nextLine());
                 double price = Double.parseDouble(scan.nextLine());
                 
-                Software software = new Software(name, ver, quantity, price);
-                tree.insert(software);
-
             }
             
         } catch (IOException e) {

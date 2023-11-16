@@ -10,7 +10,7 @@ public class Node {
     public Node(Software data, Node l, Node r) {
         this.data = data;
         this.left = l;
-        this.left = l;
+        this.right = r;
     }
 
 }
