@@ -86,13 +86,20 @@ public class SoftwareBST {
         return p;
     }
 
-
     //update quantity
-    private void updateQuantity(Node root, Node key){
-        if(comp.compare(root.data, key.data) == 0){
-            root.data.setQuantity(key.data.getQuantity());
-        }else if(root.data.getQuantity())
+    private void updateQuantity(Node root, Software key){
+        if(comp.compare(root.data, key) == 0){
+            if(root.data.getQuantity() >= key.getQuantity()){
+                root.data.setQuantity(key.getQuantity());
+                if(root.data.getQuantity() == 0){
+                    delete(root.data);
+                }
+            }
+        } else if(comp.compare(root.data, key) < 0){
+            updateQuantity(root.right, key);
+        } else {
+            updateQuantity(root.left, key);
+        }
     }
-
 
 }

@@ -51,8 +51,6 @@ public class MainApp {
         System.out.println("Quantity: ");
         int quantity = Integer.parseInt(in.nextLine());
         
-        tree.deleteSoftware(new Software(name, ver), quantity);
-
     }
     static void addSoftware(SoftwareBST tree){
         System.out.println("Enter Software Name, Version Number and Price:");
@@ -63,7 +61,7 @@ public class MainApp {
         System.out.println("Quantity: ");
         int quantity = Integer.parseInt(in.nextLine());
         
-        tree.insertSoftare(new Software(name, ver, price), quantity);
+        tree.insertSoftware(new Software(name, ver, quantity, price));
     }
 
     static void inputData(SoftwareBST tree){
@@ -75,6 +73,8 @@ public class MainApp {
                 String ver = scan.nextLine();
                 int quantity = Integer.parseInt(scan.nextLine());
                 double price = Double.parseDouble(scan.nextLine());
+                
+                Software software = new Software(name, ver, quantity, price);
                 
             }
             
