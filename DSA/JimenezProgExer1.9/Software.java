@@ -45,15 +45,11 @@ public class Software {
         this.price = price;
     }
 
-
-}
-
     @Override
     public String toString() {
-        return "{" +
-            " name='" + getName() + "'" +
-            ", version='" + getVersion() + "'" +
-            ", quantity='" + getQuantity() + "'" +
-            ", price='" + getPrice() + "'" +
-            "}";
+        return getName() + "\t" +
+                getVersion() + "\t" +
+                getQuantity() + "\t" +
+                getPrice() + "\t";
     }
+}

@@ -2,103 +2,115 @@ public class SoftwareBST {
     
     private Node root;
 
-    static CompareSoftware comp = new CompareSoftware();
-    //insert
-    public void insertSoftware(Software key){
-        this.root = insertRec(this.root, new Node(key));
-    }
+    private static CompareSoftware comp = new CompareSoftware();
 
-    private Node insertRec(Node root, Node key){
-        if(root == null){
-            root = key;
-            return root;
-        } else if(comp.compare(root.data, key.data) == 0){
-            //update quantity
-
-        } else if(comp.compare(root.data, key.data) < 0){
-            root = insertRec(root.right, key);
-        } else {
-            root = insertRec(root.left, key);
-        }
-
-        return root;
-    }
-
-    //search
-    public boolean search(Software key){
-        return searchRec(this.root, key) != null;
-    }
-
-    private Node searchRec(Node root, Software key){
+    //update quantity
+    private void updateQuantity(Node node, int quantity){
+        int newQuantity = node.data.getQuantity() - quantity;
         
-        if(comp.compare(root.data, key) == 0){
-            return root;
-        } else if(comp.compare(root.data, key) < 0){
-            searchRec(root.right, key);
-        } else {
-            searchRec(root.left, key);
+        if(newQuantity > 0){
+            node.data.setQuantity(newQuantity);
+        }else{
+            this.root = deleteNode(this.root, node.data);
         }
-        return root;
-    }
-
-    //delete
-    public void delete(Software key){
-        if (!search(key))
-            this.root = deleteByCopy(this.root, key);
     }
     
-    private Node deleteByCopy(Node root, Software key) {
+    //addSoftware
+    public void addSoftware(Software key){
+        //search if exist
+        //if it does update the quantity
+        //if it doesnt insert to tree
+        Node node = search(this.root, key);
+        if(node != null){
+            updateQuantity(node, key.getQuantity());
+        } else{
+            this.root = insertNode(this.root, key);
+        }
+    }
+    //sellSoftware
+        //search if exist
+        //if it does update the quantity
+    public void sellSoftware(Software key){
+        Node node = search(this.root, key);
+        if(node != null){
+            updateQuantity(node, key.getQuantity());
+        }
+    }
+
+    //insertNode
+    public void insertData(Software key){
+        this.root = insertNode(this.root, key);
+    }
+    private Node insertNode(Node root, Software key){
+
+        if(root == null){
+            Node nodeKey = new Node(key);
+            root = nodeKey;
+            return root;
+        }else if(comp.compare(root.data, key) < 0){
+            root.right = insertNode(root.right, key);
+        } else {
+            root.left = insertNode(root.left, key);
+        }
+
+        return root;
+    }
+    //deleteNode
+    private Node deleteNode(Node root, Software key){
         if(comp.compare(root.data, key) == 0){
             //leaf
             if(root.left == null && root.right == null){
-                //update quant
-                return root;
+                root = null;
             }
-            //1 child
+            //1 children
             else if(root.left == null || root.right == null){
-                Node temp = root;
-                root = (root.left != null) ? deleteByCopy(root.left, key) : deleteByCopy(root.right, key);
-
-                return root;
+                root = (root.left != null) ? deleteNode(root.left, key) : deleteNode(root.right, key);
             }
             //2 children
-            else{
-                Node temp = findMin(root.left);
+            else {
+                //find min in right subtree
+                Node temp = findMin(root.right);
                 root.data = temp.data;
-                root.left = deleteByCopy(temp, key);
+                root.right = deleteNode(root.right, key);
             }
-
-
-            return root;
-        } else if(comp.compare(root.data, key) < 0){
-            root = deleteByCopy(root.right, key);
-        } else {
-            root = deleteByCopy(root.left, key);
+        }else if(comp.compare(root.data, key) < 0){
+            root.right = deleteNode(root.right, key);
+        }else{
+            root.left = deleteNode(root.left, key);
         }
         return root;
     }
 
-    //findmin
     private Node findMin(Node p){
-        while(p.right != null)
-            p = p.right;
-
+        while(p.left != null){
+            p = p.left;
+        }
         return p;
     }
 
-    //update quantity
-    private void updateQuantity(Node root, Software key){
-        if(comp.compare(root.data, key) == 0){
-            if(root.data.getQuantity() >= key.getQuantity()){
-                root.data.setQuantity(key.getQuantity());
-                if(root.data.getQuantity() == 0){
-                    delete(root.data);
-                }
-            }
-        } else if(comp.compare(root.data, key) < 0){
-            updateQuantity(root.right, key);
+    //search
+    private Node search(Node root, Software key){
+        if(root == null){
+            return null;
+        }else if (comp.compare(root.data, key) == 0){
+            return root;
+        }else if(comp.compare(root.data, key) < 0){
+            return search(root.right, key);
         } else {
-            updateQuantity(root.left, key);
+            return search(root.left, key);
+        }
+    }
+
+
+    public void showTree(){
+        inorder(this.root);
+    }
+
+    private void inorder(Node root){
+        if(root != null){
+            inorder(root.left);
+            System.out.println(root.data.toString());
+            inorder(root.right);
         }
     }
 

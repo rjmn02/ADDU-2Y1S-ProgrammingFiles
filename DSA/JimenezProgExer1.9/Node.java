@@ -1,16 +1,15 @@
 public class Node {
     protected Software data;
-    protected Node left;
-    protected Node right;
+    protected Node left, right;
 
-    public Node(Software data) {
+    public Node(Software data){
         this(data, null, null);
     }
 
-    public Node(Software data, Node l, Node r) {
+    public Node(Software data, Node left, Node right) {
         this.data = data;
-        this.left = l;
-        this.right = r;
+        this.left = left;
+        this.right = right;
     }
 
 }
