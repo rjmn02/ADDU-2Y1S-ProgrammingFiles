@@ -3,37 +3,45 @@ public class SoftwareBST {
     private Node root;
 
     private static CompareSoftware comp = new CompareSoftware();
-
-    //update quantity
-    private void updateQuantity(Node node, int quantity){
-        int newQuantity = node.data.getQuantity() - quantity;
-        
-        if(newQuantity > 0){
-            node.data.setQuantity(newQuantity);
-        }else{
-            this.root = deleteNode(this.root, node.data);
-        }
-    }
     
     //addSoftware
     public void addSoftware(Software key){
-        //search if exist
+
+        //search if key exist
         //if it does update the quantity
-        //if it doesnt insert to tree
+        //if it doesnt insert key to tree
+
         Node node = search(this.root, key);
+        
         if(node != null){
-            updateQuantity(node, key.getQuantity());
+            int newQuantity = node.data.getQuantity() + key.getQuantity();
+        
+            if(newQuantity > 0){
+                node.data.setQuantity(newQuantity);
+            }else{
+                this.root = deleteNode(this.root, node.data);
+            }
+
         } else{
             this.root = insertNode(this.root, key);
         }
     }
     //sellSoftware
-        //search if exist
-        //if it does update the quantity
     public void sellSoftware(Software key){
+
+        //search if key exist
+        //if it does update the quantity
+        //else do nothing
+
         Node node = search(this.root, key);
         if(node != null){
-            updateQuantity(node, key.getQuantity());
+            int newQuantity = node.data.getQuantity() - key.getQuantity();
+        
+            if(newQuantity > 0){
+                node.data.setQuantity(newQuantity);
+            }else{
+                this.root = deleteNode(this.root, node.data);
+            }
         }
     }
 
@@ -41,6 +49,7 @@ public class SoftwareBST {
     public void insertData(Software key){
         this.root = insertNode(this.root, key);
     }
+    
     private Node insertNode(Node root, Software key){
 
         if(root == null){
@@ -57,7 +66,10 @@ public class SoftwareBST {
     }
     //deleteNode
     private Node deleteNode(Node root, Software key){
-        if(comp.compare(root.data, key) == 0){
+        
+        if(root == null){
+            return null;
+        }else if(comp.compare(root.data, key) == 0){
             //leaf
             if(root.left == null && root.right == null){
                 root = null;

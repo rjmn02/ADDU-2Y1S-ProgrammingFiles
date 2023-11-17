@@ -44,24 +44,33 @@ public class MainApp {
         tree.showTree();
     }
     static void sellSoftware(SoftwareBST tree){
-        System.out.println("Enter Software Name and Version Number");
-        String name = in.nextLine();
-        String ver = in.nextLine();
+        tree.showTree();
+        System.out.println("----------------------------Enter Software's Details----------------------------");
+        System.out.print("Name: ");
+        String name = in.nextLine().trim();
+        System.out.print("Version: ");
+        String ver = in.nextLine().trim();
+        System.out.print("Price of the Software: ");
+        double price = Double.parseDouble(in.nextLine().trim());
 
-        System.out.println("Quantity: ");
-        int quantity = Integer.parseInt(in.nextLine());
+        System.out.println("Quantity To Sell: ");
+        int quantity = Integer.parseInt(in.nextLine().trim());
 
-        tree.sellSoftware(new Software(name, ver, quantity, 0));
+        tree.sellSoftware(new Software(name, ver, quantity, price));
         
     }
     static void addSoftware(SoftwareBST tree){
-        System.out.println("Enter Software Name, Version Number and Price:");
-        String name = in.nextLine();
-        String ver = in.nextLine();
-        double price = Double.parseDouble(in.nextLine());
+        tree.showTree();
+        System.out.println("----------------------------Enter Software's Details----------------------------");
+        System.out.print("Name: ");
+        String name = in.nextLine().trim();
+        System.out.print("Version: ");
+        String ver = in.nextLine().trim();
+        System.out.print("Price of the Software: ");
+        double price = Double.parseDouble(in.nextLine().trim());
 
-        System.out.println("Quantity: ");
-        int quantity = Integer.parseInt(in.nextLine());
+        System.out.println("Quantity To Add: ");
+        int quantity = Integer.parseInt(in.nextLine().trim());
         
         tree.addSoftware(new Software(name, ver, quantity, price));
     }
@@ -71,10 +80,10 @@ public class MainApp {
             FileReader fr = new FileReader("software.txt");
             Scanner scan = new Scanner(fr);
             while(scan.hasNextLine()){
-               String name = scan.nextLine();
-               String ver = scan.nextLine();
-               int quantity = Integer.parseInt(scan.nextLine());
-               double price = Double.parseDouble(scan.nextLine());
+               String name = scan.nextLine().trim();
+               String ver = scan.nextLine().trim();
+               int quantity = Integer.parseInt(scan.nextLine().trim());
+               double price = Double.parseDouble(scan.nextLine().trim());
                 
                Software software = new Software(name, ver, quantity, price);
                tree.insertData(software);
