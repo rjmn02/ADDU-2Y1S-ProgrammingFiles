@@ -15,13 +15,7 @@ public class SoftwareBST {
         
         if(node != null){
             int newQuantity = node.data.getQuantity() + key.getQuantity();
-        
-            if(newQuantity > 0){
-                node.data.setQuantity(newQuantity);
-            }else{
-                this.root = deleteNode(this.root, node.data);
-            }
-
+            node.data.setQuantity(newQuantity);
         } else{
             this.root = insertNode(this.root, key);
         }
@@ -45,11 +39,12 @@ public class SoftwareBST {
         }
     }
 
-    //insertNode
-    public void insertData(Software key){
+    //fillTree
+    public void fillTree(Software key){
         this.root = insertNode(this.root, key);
     }
     
+    //insertNode
     private Node insertNode(Node root, Software key){
 
         if(root == null){

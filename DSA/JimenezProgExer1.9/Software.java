@@ -6,10 +6,10 @@ public class Software {
     private double price;
 
     public Software(String name, String version, int quantity, double price) {
-        this.name = name;
-        this.version = version;
-        this.quantity = quantity;
-        this.price = price;
+        setName(name);
+        setVersion(version);
+        setQuantity(quantity);
+        setPrice(price);
     }
 
 
@@ -34,7 +34,8 @@ public class Software {
     }
 
     public void setQuantity(int quantity) {
-        this.quantity = quantity;
+        if(quantity >= 0)
+            this.quantity = quantity;
     }
 
     public double getPrice() {

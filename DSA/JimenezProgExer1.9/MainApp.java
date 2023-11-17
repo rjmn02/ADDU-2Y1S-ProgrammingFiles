@@ -86,7 +86,7 @@ public class MainApp {
                double price = Double.parseDouble(scan.nextLine().trim());
                 
                Software software = new Software(name, ver, quantity, price);
-               tree.insertData(software);
+               tree.fillTree(software);
                 
             }
             
