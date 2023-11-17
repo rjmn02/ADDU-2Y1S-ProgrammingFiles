@@ -34,6 +34,7 @@ public class MainApp {
                          selection = false;
                          break;
                     default: 
+                        System.out.println("Invalid input. \n");
                          break;
                }
           }
