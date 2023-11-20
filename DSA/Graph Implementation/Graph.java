@@ -1,8 +1,18 @@
 import java.util.ArrayList;
-import java.util.LinkedList;
 
 public class Graph{
+    ArrayList<Vertex> vertices = new ArrayList<>();
+    private int[][] adjacencyMatrix;
+    
 
-    ArrayList<LinkedList<Vertex>> alist = new ArrayList<>();
+    public Graph(int numVertices) {
+        this.adjacencyMatrix = new int[numVertices][numVertices];
+    }
+
+    //addvertex(data)
+    public void addVertex(Vertex v){
+        vertices.add(v);
+    }
+    //addedge()
 
 }
