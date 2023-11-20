@@ -3,19 +3,43 @@ import java.util.*;
 
 public class Main {
     public static void main(String[] args) {
-        int numVertices = 0;
-        Graph graph = new Graph(numVertices);
-
+        Graph graph = new Graph();
         inputData(graph);
-
+        System.out.println("Adjacency List: ");
+        graph.displayAdjList();
+        System.out.println("Incidence Matrix");
+        graph.displayIncidenceList();
     }
 
-    static void inputData(Graph graph) throws IOException{
-        BufferedReader br = new BufferedReader(new FileReader("graph.txt"));
-        Scanner scan = new Scanner(br);
-        while (scan.hasNextLine()) {
-            graph.add
+    static void inputData(Graph graph){
+        try(BufferedReader br = new BufferedReader(new FileReader("graph.txt"))) {
+            
+            String line;
+            while ((line = br.readLine()) != null) {
 
+                String[] verts = line.split(" ");
+
+                if(verts.length == 1){
+                    graph.addVertex(new Vertex(verts[0].charAt(0)));   
+
+                }else if(verts.length == 2){
+
+                    //get vertex from graph
+                    //add edges 
+
+                    Vertex v1 = graph.getVertex(verts[0].charAt(0));
+                    Vertex v2 = graph.getVertex(verts[1].charAt(0));
+
+                    if(v1 != null && v2 != null){
+                        graph.addEdge(v1, v2);
+                    }
+                }
+            }
+
+        } catch (FileNotFoundException fnfe) {
+            fnfe.printStackTrace();
+        } catch (IOException ioe) {
+            ioe.printStackTrace();
         }
     }
 
