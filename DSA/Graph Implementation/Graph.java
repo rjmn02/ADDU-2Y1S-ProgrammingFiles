@@ -5,5 +5,4 @@ public class Graph{
 
     ArrayList<LinkedList<Vertex>> alist = new ArrayList<>();
 
-
 }
