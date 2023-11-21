@@ -1,7 +1,6 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-
 public class Graph{
     private HashMap<Vertex, LinkedList<Vertex>> adjList;
     private ArrayList<Vertex> vertices;
@@ -55,7 +54,7 @@ public class Graph{
 
     }
 
-    public void displayIncidenceList(){
+    public void displayIncidenceMatrix(){
 
     }
 

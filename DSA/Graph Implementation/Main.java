@@ -8,7 +8,7 @@ public class Main {
         System.out.println("Adjacency List: ");
         graph.displayAdjList();
         System.out.println("Incidence Matrix");
-        graph.displayIncidenceList();
+        graph.displayIncidenceMatrix();
     }
 
     static void inputData(Graph graph){
