@@ -5,10 +5,8 @@ public class Main {
     public static void main(String[] args) {
         Graph graph = new Graph();
         inputData(graph);
-        System.out.println("Adjacency List: ");
         graph.displayAdjList();
-        System.out.println("Incidence Matrix");
-        graph.displayIncidenceMatrix();
+        graph.displayIncidenceList();
     }
 
     static void inputData(Graph graph){

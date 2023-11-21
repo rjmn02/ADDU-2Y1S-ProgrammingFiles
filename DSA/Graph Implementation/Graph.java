@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
 public class Graph{
+
     private HashMap<Vertex, LinkedList<Vertex>> adjList;
     private ArrayList<Vertex> vertices;
+
     public Graph() {
         adjList = new HashMap<>();
         vertices = new ArrayList<>();
@@ -11,8 +13,6 @@ public class Graph{
 
     //addvertex(data)
     public void addVertex(Vertex v){
-        //add in vertices
-        //add in adjacent list
         vertices.add(v);
         adjList.put(v, new LinkedList<>());
     }
@@ -32,6 +32,7 @@ public class Graph{
         adjList.get(v2).add(v1);
     }
     
+    
     public Vertex getVertex(char key){
         for(Vertex v : vertices){
             if(v.getData() == key){
@@ -41,8 +42,13 @@ public class Graph{
         return null;
     }
 
+    //display adj list
     public void displayAdjList() {
-        System.out.println("---------------------------------------");
+
+        printLines();
+        System.out.println("Adjacency List: ");
+        printLines();
+
         for(Vertex v : adjList.keySet()){
             System.out.print("| " + v.toString() + " | ");
             for(Vertex adjV : adjList.get(v)){
@@ -50,12 +56,27 @@ public class Graph{
             }
             System.out.println();
         }
+        printLines();
+
+    }
+
+    public void displayIncidenceList() {
+
+        printLines();
+        System.out.println("Incidence List: ");
+        printLines();
+
+        for(Vertex v : adjList.keySet()){
+            System.out.print("| " + v.toString() + " | ");
+            for(Vertex adjV : adjList.get(v)){
+                System.out.print(v.toString() + adjV.toString() + " ");
+            }
+            System.out.println();
+        }
+        printLines();
+    }
+
+    private void printLines(){
         System.out.println("---------------------------------------");
-
     }
-
-    public void displayIncidenceMatrix(){
-
-    }
-
 }
