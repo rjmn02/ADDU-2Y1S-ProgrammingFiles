@@ -9,6 +9,8 @@ payment_methods(
 
 ),
 
+application_payment_methods(),
+
 it_team_member_statuses(
     id INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(id),
