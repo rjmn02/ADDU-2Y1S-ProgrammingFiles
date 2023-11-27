@@ -1,12 +1,4 @@
 CREATE TABLE IF NOT EXISTS
-system_components(
-    id INT NOT NULL,
-    PRIMARY KEY(id),
-    component_id INT NOT NULL,
-    system_id INT NOT NULL,
-
-
-)
 
 system_team_choices(
     id INT NOT NULL AUTO_INCREMENT,
@@ -70,4 +62,13 @@ system_teams(
     system_id INT NOT NULL,
     FOREIGN KEY(system_id) REFERENCES systems(id)
 ),
+
+system_components(
+    id INT NOT NULL,
+    PRIMARY KEY(id),
+    component_id INT NOT NULL,
+    FOREIGN KEY(component_id) REFERENCES components(id),
+    system_id INT NOT NULL,
+    FOREIGN KEY(system_id) REFERENCES systems(id),
+)
 
