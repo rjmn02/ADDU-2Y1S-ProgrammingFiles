@@ -1,15 +1,15 @@
 import java.io.*;
 import java.util.*;
 
-public class Main {
+public class MainApp {
     public static void main(String[] args) {
-        Graph graph = new Graph();
+        GraphImp graph = new GraphImp();
         inputData(graph);
         graph.displayAdjList();
         graph.displayIncidenceList();
     }
 
-    static void inputData(Graph graph){
+    static void inputData(GraphImp graph){
         try(BufferedReader br = new BufferedReader(new FileReader("graph.txt"))) {
             
             String line;

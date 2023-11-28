@@ -1,12 +1,12 @@
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.LinkedList;
-public class Graph{
+public class GraphImp{
 
     private HashMap<Vertex, LinkedList<Vertex>> adjList;
     private ArrayList<Vertex> vertices;
 
-    public Graph() {
+    public GraphImp() {
         adjList = new HashMap<>();
         vertices = new ArrayList<>();
     }
@@ -75,6 +75,10 @@ public class Graph{
         }
         printLines();
     }
+
+    //traversals
+    public void DFS(){}
+    public void BFS(){}
 
     private void printLines(){
         System.out.println("---------------------------------------");
