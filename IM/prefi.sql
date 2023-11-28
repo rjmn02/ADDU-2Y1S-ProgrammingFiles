@@ -24,12 +24,6 @@ system_statuses(
     description VARCHAR(30),
 ),
 
-systems_approvers(
-    id INT NOT NULL AUTO_INCREMENT,
-    PRIMARY KEY(id),
-
-),
-
 systems(
     id INT NOT NULL AUTO_INCREMENT,
     PRIMARY KEY(ID),
@@ -52,6 +46,16 @@ systems(
     flowchart_link VARCHAR(200),
     audit_status_id INT NOT NULL,
     FOREIGN KEY(audit_status_id) REFERENCES system_audit_statuses(id)
+),
+
+systems_approvers(
+    id INT NOT NULL AUTO_INCREMENT,
+    PRIMARY KEY(id),
+    system_id INT NOT NULL,
+    FOREIGN KEY(system_id) REFERENCES systems(id),
+    employee_id INT NOT NULL,
+    FOREIGN KEY(employee_id) REFERENCES employees(id),    
+
 ),
 
 system_teams(
