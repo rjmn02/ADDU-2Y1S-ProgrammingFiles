@@ -6,7 +6,7 @@ public class MainApp {
         GraphImp graph = new GraphImp();
         inputData(graph);
         graph.displayAdjList();
-        graph.displayIncidenceList();
+        graph.DFS();
     }
 
     static void inputData(GraphImp graph){

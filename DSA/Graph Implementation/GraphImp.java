@@ -77,23 +77,32 @@ public class GraphImp{
     //traversals
     public void DFS(){
         Vertex vStart = getVertex('A');
-        DFSRec(vStart);
-    }   
-    private void DFSRec(Vertex start){
         ArrayList<Vertex> visited = new ArrayList<>();
-        //adj vertices of start
+
+        System.out.println("DFS Traversal");
+        DFSRec(vStart, visited);
+    }
+
+    private void DFSRec(Vertex start, ArrayList<Vertex> visited){
         LinkedList<Vertex> adjVerts = this.adjList.get(start);
+
         visited.add(start);
-        System.out.println(start.toString() + "-");
+        System.out.print(start.getData() + "-");
         
-        for(Vertex v: adjList.keySet()){
-            for(Vertex vAdj: adjList.get(start)){
-                if(!visited.contains(start)){}
+        for(Vertex v: adjVerts){   
+            if(!visited.contains(v) && ){
+                DFSRec(v, visited);
             }
         }
         
     }
-    public void BFS(){}
+    public void BFS(){
+        Queue<Vertex> q;
+        Vertex start = getVertex('A');
+    }
+    private void BFSRec(){
+        
+    }
 
     private void printLines(){
         System.out.println("---------------------------------------");
