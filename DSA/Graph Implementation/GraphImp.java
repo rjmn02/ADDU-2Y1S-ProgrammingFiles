@@ -1,13 +1,11 @@
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.LinkedList;
+import java.util.*;
 public class GraphImp{
 
-    private HashMap<Vertex, LinkedList<Vertex>> adjList;
+    private Map<Vertex, LinkedList<Vertex>> adjList;
     private ArrayList<Vertex> vertices;
 
     public GraphImp() {
-        adjList = new HashMap<>();
+        adjList = new LinkedHashMap<>();
         vertices = new ArrayList<>();
     }
 
@@ -77,8 +75,15 @@ public class GraphImp{
     }
 
     //traversals
-    public void DFS(){}
-    public void BFS(){}
+    // public void DFS(char start){
+    //     Vertex startV = getVertex(start);
+
+    //     DFSRec(startV, )
+    // }
+    // private void DFSRec(){
+
+    // }
+    // public void BFS(){}
 
     private void printLines(){
         System.out.println("---------------------------------------");
