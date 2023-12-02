@@ -1,3 +1,5 @@
+import java.lang.reflect.Array;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
@@ -43,4 +45,60 @@ public class DWGraph {
             System.out.println();
         }
     }
+    
+    public void dijkstraAlgorithm(char startVer){
+        System.out.println("SHORTEST PATH DJIKSTRA'S ALGORITHM: ");
+        Vertex first = getVertex(startVer);
+        System.out.println("Starting Vertex: " + first.toString());
+        dijkstraHelper(adjList, first);
+    }
+
+    private void dijkstraHelper(Map<Vertex, LinkedList<Edge>> digraph, Vertex first){
+        Map<Vertex, Integer> currDist = new LinkedHashMap<>();
+
+        for(Vertex v: digraph.keySet()){
+            currDist.put(v, Integer.MAX_VALUE);
+        }
+        currDist.put(first, 0);
+        
+        ArrayList<Vertex> toBeChecked = new ArrayList<>(digraph.keySet());
+        while(!toBeChecked.isEmpty()) {
+            Vertex v = findMin(toBeChecked, currDist);
+            toBeChecked.remove(v);
+            for(Edge e: digraph.get(v)){
+                Vertex u = e.getConnectedVertex();
+                if(toBeChecked.contains(u)){
+                    if(currDist.get(u) > currDist.get(v) + e.getWeight()){
+                        currDist.put(u, currDist.get(v) + e.getWeight());
+                    }
+                }
+            }
+            
+        }
+
+        printDijkstra(currDist);
+        
+    }
+
+    private Vertex findMin(ArrayList<Vertex> toBeChecked, Map<Vertex, Integer> currDist){
+        Vertex minVer = null;
+        int minDist = Integer.MAX_VALUE;
+
+        for (Vertex v : toBeChecked) {
+            int distance = currDist.get(v);
+            if (distance <= minDist) {
+                minDist = distance;
+                minVer = v;
+            }
+        }
+
+        return minVer;
+    }
+
+    private void printDijkstra(Map<Vertex, Integer> graph){
+        for (Vertex v : graph.keySet()) {
+            System.out.println(v.toString() + " " +graph.get(v));
+        }
+    }
+    
 }

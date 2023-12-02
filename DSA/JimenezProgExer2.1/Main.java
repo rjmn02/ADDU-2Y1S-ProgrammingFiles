@@ -8,6 +8,7 @@ public class Main {
         DWGraph dwGraph = new DWGraph();
         inputData(dwGraph);
         dwGraph.displayGraph();
+        dwGraph.dijkstraAlgorithm('A');
     }
 
     static void inputData(DWGraph dwGraph){
