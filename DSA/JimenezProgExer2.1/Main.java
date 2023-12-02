@@ -2,13 +2,17 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
         DWGraph dwGraph = new DWGraph();
         inputData(dwGraph);
+
+        char startVer = Character.toUpperCase(inputStartingVertex());
+
         dwGraph.displayGraph();
-        dwGraph.dijkstraAlgorithm('A');
+        dwGraph.dijkstraAlgorithm(startVer);
     }
 
     static void inputData(DWGraph dwGraph){
@@ -32,5 +36,11 @@ public class Main {
         } catch (IOException ioe) {
             ioe.printStackTrace();
         }
+    }
+
+    static char inputStartingVertex(){
+        Scanner console = new Scanner(System.in);
+        System.out.println("Input starting vertex: ");
+        return console.nextLine().charAt(0);
     }
 }
