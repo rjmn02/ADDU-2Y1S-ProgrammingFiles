@@ -8,10 +8,9 @@ public class Main {
     public static void main(String[] args) {
         DWGraph dwGraph = new DWGraph();
         inputData(dwGraph);
-
-        char startVer = Character.toUpperCase(inputStartingVertex());
-
         dwGraph.displayGraph();
+        
+        char startVer = Character.toUpperCase(inputStartingVertex());
         dwGraph.dijkstraAlgorithm(startVer);
     }
 
