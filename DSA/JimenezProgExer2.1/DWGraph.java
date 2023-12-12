@@ -1,8 +1,10 @@
 import java.lang.reflect.Array;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.Map;
+import java.util.PriorityQueue;
 
 public class DWGraph {
     private Map<Vertex, LinkedList<Edge>> adjList;
@@ -61,7 +63,9 @@ public class DWGraph {
         }
         currDist.put(first, 0);
         
-        ArrayList<Vertex> toBeChecked = new ArrayList<>(digraph.keySet());
+        PriorityQueue<Vertex> toBeChecked = new PriorityQueue<>(Comparator.comparingInt((v) -> currDist.get(v)));
+        toBeChecked.addAll(digraph.keySet());
+
         while(!toBeChecked.isEmpty()) {
             Vertex v = findMin(toBeChecked, currDist);
             toBeChecked.remove(v);
@@ -80,7 +84,7 @@ public class DWGraph {
         
     }
 
-    private Vertex findMin(ArrayList<Vertex> toBeChecked, Map<Vertex, Integer> currDist){
+    private Vertex findMin(PriorityQueue<Vertex> toBeChecked, Map<Vertex, Integer> currDist){
         Vertex minVer = null;
         int minDist = Integer.MAX_VALUE;
 
